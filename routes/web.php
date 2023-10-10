@@ -21,3 +21,8 @@ Route::get('/', function () {
 Route::get('/', function () {
     return view('costumer.menu');
 });
+
+// admin dashboard
+Route::get('/dashboard', function () {
+    return view('kasir.dashboard');
+});
