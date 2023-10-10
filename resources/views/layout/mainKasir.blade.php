@@ -14,13 +14,13 @@
 <link href="css/dashboard.css" rel="stylesheet">
 
     <style>
-      .bd-placeholder-img {
+      /* .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
-      }
+      } */
 
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
@@ -66,7 +66,7 @@
         -webkit-overflow-scrolling: touch;
       }
 
-      .btn-bd-primary {
+      /* .btn-bd-primary {
         --bd-violet-bg: #712cf9;
         --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
 
@@ -81,10 +81,10 @@
         --bs-btn-active-color: var(--bs-btn-hover-color);
         --bs-btn-active-bg: #5a23c8;
         --bs-btn-active-border-color: #5a23c8;
-      }
-      .bd-mode-toggle {
+      } */
+      /* .bd-mode-toggle {
         z-index: 1500;
-      }
+      } */
     </style>
 
     
@@ -92,7 +92,7 @@
     <link href="dashboard.css" rel="stylesheet">
   </head>
   <body>
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    {{-- <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
       </symbol>
@@ -106,8 +106,8 @@
       <symbol id="sun-fill" viewBox="0 0 16 16">
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
       </symbol>
-    </svg>
-
+    </svg> --}}
+{{-- 
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
       <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
               id="bd-theme"
@@ -141,7 +141,7 @@
           </button>
         </li>
       </ul>
-    </div>
+    </div> --}}
 
     
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -162,41 +162,34 @@
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
       <div class="position-sticky pt-3 sidebar-sticky">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
-              <span data-feather="home" class="align-text-bottom"></span>
+            <a class="nav-link" aria-current="page" href="{{ route('kasir.dashboard') }}">
+              <span data-feather="home" class="align-text-bottom"><img src="assets/icon/dashboard.png" alt="dashboard"></span>
               Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file" class="align-text-bottom"></span>
+            <a class="nav-link" href="{{ route('kasir.orders') }}">
+              <span data-feather="file" class="align-text-bottom"><img src="assets/icon/orders.png" alt="orders"></span>
               Orders
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart" class="align-text-bottom"></span>
-              Products
+            <a class="nav-link" href="{{ route('kasir.menuProduk') }}">
+              <span data-feather="shopping-cart" class="align-text-bottom"><img src="assets/icon/menu.png" alt="menu"></span>
+              Menu
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <span data-feather="users" class="align-text-bottom"></span>
+              <span data-feather="users" class="align-text-bottom"><img src="assets/icon/user.png" alt="user"></span>
               Customers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers" class="align-text-bottom"></span>
-              Integrations
             </a>
           </li>
         </ul>
@@ -210,7 +203,7 @@
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <span data-feather="file-text" class="align-text-bottom"></span>
+              <span data-feather="file-text" class="align-text-bottom"><img src="assets/icon/pelaporan.png" alt="dashboard"></span>
               Laporan Keuangan & Penjualan
             </a>
           </li>
@@ -224,6 +217,15 @@
     {{-- dashboard --}}
     @yield('dashboard')
     {{-- end --}}
+    {{-- orders --}}
+    @yield('orders')
+    {{-- end --}}
+    {{-- menuProduk --}}
+    @yield('menuProduk')
+    {{-- end --}}
+
+
+
     </main>
 
     {{-- end data --}}

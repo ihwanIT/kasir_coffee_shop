@@ -25,4 +25,12 @@ Route::get('/', function () {
 // admin dashboard
 Route::get('/dashboard', function () {
     return view('kasir.dashboard');
-});
+})->name('kasir.dashboard');
+// admin order
+Route::get('/orders', function () {
+    return view('kasir.orders');
+})->name('kasir.orders');
+// admin menu
+Route::get('/MenuProduk', function () {
+    return view('kasir.menuProduk');
+})->name('kasir.menuProduk');
