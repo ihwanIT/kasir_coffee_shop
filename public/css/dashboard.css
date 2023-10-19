@@ -1,11 +1,17 @@
 body {
   font-size: .875rem;
 }
+h3{
+  margin: 10px 0px;
+}
 
 .feather {
   width: 16px;
   height: 16px;
 }
+/* #sidebarMenu:hover{
+  width: 40px;
+} */
 
 /*
  * Sidebar
@@ -40,11 +46,30 @@ body {
 .sidebar .nav-link {
   font-weight: 500;
   color: #333;
+ 
 }
 
 .sidebar .nav-link .feather {
   margin-right: 4px;
   color: #727272;
+}
+.search{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
+.search button{
+  padding: 6px 10px;
+  border:0;
+  border-radius: 5px;
+  background-color: gray;
+  color: white;
+}
+.search input{
+  padding: 5px 10px;
+  /* border-radius: 5px;
+  border: 0;
+  */
 }
 
 .sidebar .nav-link.active {
@@ -104,6 +129,7 @@ body {
   border: 0;
   text-align: center;
   font-size: large;
+  box-shadow: 1px 2px gray;
 }
 .card p{
   margin: 10px;

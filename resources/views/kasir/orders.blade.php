@@ -54,53 +54,52 @@
     {{-- end --}}
 
 <h3>Orders</h3>
-<br>
+
+{{-- search --}}
+<div class="search">
+  <div>
+    <button data-bs-target="#exampleModal" data-bs-toggle="modal"  style="background-color:blue; border:0; border-radius:5px; padding:5px 20px;">Tambah Orderan</button>
+    <button style="background-color: yellow;">Edit</button>
+    <button style="background-color: red;">Hapus</button>
+  </div>
+  <form action="" method="post">
+    <input type="search" name="" id="" placeholder="Cari Pesanan">
+    <button type="submit">Cari</button>
+  </form>
+</div>
+{{-- end --}}
+
 <table class="table table-striped table-hover">
-    <button data-bs-target="#exampleModal" data-bs-toggle="modal"  style="background-color:green; border:0; border-radius:5px; padding:5px 20px;">Tambah Orderan</button>
     <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">Nama Pemesan</th>
-          <th scope="col">Pesanan</th>
-          <th scope="col">Kategori</th>
-          <th scope="col">Harga</th>
-          <th scope="col">Jumlah</th>
-          <th scope="col">No Meja</th>
-          <th scope="col">total</th>
-        </tr>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">No</th>
+        <th scope="col">Nama Pemesan</th>
+        <th scope="col">Pesanan</th>
+        <th scope="col">Jenis</th>
+        <th scope="col">Kategori</th>
+        <th scope="col">Harga</th>
+        <th scope="col">Jumlah</th>
+        <th scope="col">Keterangan</th>
+        <th scope="col">No Meja</th>
+        <th scope="col">total</th>
+        <th scope="col">Action</th>
+      </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1,001</td>
-          <td>alin</td>
-          <td>data</td>
-          <td>placeholder</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-        </tr>
-        <tr>
-          <td>1,002</td>
-          <td>radit</td>
-          <td>irrelevant</td>
-          <td>visual</td>
-          <td>layout</td>
-          <td>layout</td>
-          <td>layout</td>
-          <td>layout</td>
-        </tr>
-        <tr>
-          <td>1,003</td>
-          <td>ayu</td>
-          <td>rich</td>
-          <td>dashboard</td>
-          <td>tabular</td>
-          <td>tabular</td>
-          <td>tabular</td>
-          <td>tabular</td>
-        </tr>
- 
+      <tr>
+        <td><input type="checkbox" name="" id=""></td>
+        <td>1,001</td>
+        <td>alin</td>
+        <td>data</td>
+        <td>placeholder</td>
+        <td>text</td>
+        <td>text</td>
+        <td>text</td>
+        <td>text</td>
+        <td>text</td>
+        <td>text</td>
+        <td>text</td>
+      </tr>
       </tbody>
   </table>
 @endsection
