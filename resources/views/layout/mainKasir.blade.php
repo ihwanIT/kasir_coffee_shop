@@ -80,14 +80,14 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search"
-            aria-label="Search">
+
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
                 <a class="nav-link px-3" href="#">Sign out</a>
             </div>
         </div>
     </header>
+    {{-- <header><h3>Dashboard</h3></header> --}}
 
     <div class="container-fluid">
         <div class="row">
@@ -119,6 +119,20 @@
                                 Menu
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('kasir.persediaan') }}">
+                                <span data-feather="shopping-cart" class="align-text-bottom"><img
+                                        src="assets/icon/menu.png" alt="menu"></span>
+                                Persediaan
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('kasir.transaksi') }}">
+                                <span data-feather="users" class="align-text-bottom"><img src="assets/icon/user.png"
+                                        alt="user"></span>
+                                Transaksi pembelian
+                            </a>
+                        </li>
 
                     </ul>
 
@@ -127,13 +141,7 @@
                         <span>Laporan</span>
                     </h6>
                     <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('kasir.karyawanCaffee') }}">
-                                <span data-feather="users" class="align-text-bottom"><img src="assets/icon/user.png"
-                                        alt="user"></span>
-                                Karyawan
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('kasir.laporan') }}">
                                 <span data-feather="file-text" class="align-text-bottom"><img
@@ -160,6 +168,9 @@
                 {{-- end --}}
                 {{-- karyawan --}}
                 @yield('karyawan')
+                {{-- end --}}
+                {{-- persediaan --}}
+                @yield('persediaan')
                 {{-- end --}}
                 {{-- laporan --}}
                 @yield('laporan')

@@ -26,7 +26,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn" style="background-color: green;">Tambah Menu</button>
+                    <button type="button" class="btn" style="background-color: green;">Hapus</button>
                 </div>
             </div>
         </div>
@@ -70,18 +70,17 @@
     <div class="search">
         <div>
             <button data-bs-target="#exampleModal" data-bs-toggle="modal"
-                style="background-color:blue; border:0; border-radius:5px; padding:5px 20px;">Tambah Orderan</button>
+                style="background-color:blue; border:0; border-radius:5px; padding:5px 20px;">Tambah Menu</button>
             <select name="" id="">
                 <option value="">Makanan</option>
                 <option value="">Minuman</option>
                 <option value="">Coffee</option>
             </select>
-            <button style="background-color: black;">Edit</button>
             <button style="background-color: red;">Hapus</button>
 
         </div>
         <form action="" method="post">
-            <input type="search" name="" id="" placeholder="Cari Produk">
+            <input type="search" name="" id="" placeholder="Cari Menu">
             <button type="submit">Cari</button>
         </form>
     </div>

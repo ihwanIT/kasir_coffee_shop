@@ -1,17 +1,16 @@
 @extends('layout.mainKasir')
 @section('karyawan')
-    <h3>Karyawan</h3>
+    <h3>Transaksi</h3>
     {{-- search --}}
     <div class="search">
         <div>
             <button data-bs-target="#exampleModal" data-bs-toggle="modal"
-                style="background-color:blue; border:0; border-radius:5px; padding:5px 20px;">Tambah Karyawan</button>
-            <button style="background-color: black;">Edit</button>
+                style="background-color:blue; border:0; border-radius:5px; padding:5px 20px;">Tambah Transaksi</button>
             <button style="background-color: red;">Hapus</button>
 
         </div>
         <form action="" method="post">
-            <input type="search" name="" id="" placeholder="Cari Karyawan">
+            <input type="search" name="" id="" placeholder="Cari Transaksi">
             <button type="submit">Cari</button>
         </form>
     </div>

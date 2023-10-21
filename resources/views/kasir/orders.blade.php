@@ -59,11 +59,11 @@
 <div class="search">
   <div>
     <button data-bs-target="#exampleModal" data-bs-toggle="modal"  style="background-color:blue; border:0; border-radius:5px; padding:5px 20px;">Tambah Orderan</button>
-    <button style="background-color: yellow;">Edit</button>
+    {{-- <button style="background-color: yellow;">Edit</button> --}}
     <button style="background-color: red;">Hapus</button>
   </div>
   <form action="" method="post">
-    <input type="search" name="" id="" placeholder="Cari Pesanan">
+    <input type="search" name="" id="" placeholder="Cari Orders">
     <button type="submit">Cari</button>
   </form>
 </div>
@@ -78,17 +78,16 @@
         <th scope="col">Pesanan</th>
         <th scope="col">Jenis</th>
         <th scope="col">Kategori</th>
+        <th scope="col">Keterangan</th>
         <th scope="col">Harga</th>
         <th scope="col">Jumlah</th>
-        <th scope="col">Keterangan</th>
-        <th scope="col">No Meja</th>
         <th scope="col">total</th>
-        <th scope="col">Action</th>
+        <th scope="col">Waktu</th>
       </tr>
       </thead>
       <tr>
         <td><input type="checkbox" name="" id=""></td>
-        <td>1,001</td>
+        <td>1</td>
         <td>alin</td>
         <td>data</td>
         <td>placeholder</td>
@@ -98,7 +97,11 @@
         <td>text</td>
         <td>text</td>
         <td>text</td>
-        <td>text</td>
+        
+        {{-- <td style="display:flex; text-align:center;">
+          <button class="buttom-action-orders" style="background-color: yellow;">Edit</button>
+          <button class="buttom-action-orders" style="background-color: red;">Hapus</button>
+        </td> --}}
       </tr>
       </tbody>
   </table>

@@ -2,22 +2,22 @@
 @section('dashboard')
     <h3>Dashboard</h3>
     <div class="container-card">
-        <div class="card">
+        <div class="card-date" style="border-left:20px solid yellow;">
             <p>Pengunjung</p>
             <p>100</p>
 
         </div>
-        <div class="card" style="background-color: blue">
+        <div class="card-date" style=" border-left:20px solid blue;">
             <p>Penjualan</p>
             <p>120</p>
 
         </div>
-        <div class="card" style="background-color: #1E90FF">
+        <div class="card-date" style=" border-left:20px solid red;">
             <p>Paling banyak Dibeli</p>
             <p>Es Teh</p>
 
         </div>
-        <div class="card" style="background-color: green;">
+        <div class="card-date" style=" border-left:20px solid green;">
             <p>Pendapatan</p>
             <p>500.000</p>
 
@@ -26,7 +26,7 @@
     {{-- search --}}
     <div class="search">
         <div>
-            <button style="background-color: green;">Terima</button>
+            <button style="background-color: green; ">Terima</button>
             <button style="background-color: red;">Hapus</button>
         </div>
         <form action="" method="post">
@@ -54,7 +54,7 @@
                     <th scope="col">Keterangan</th>
                     <th scope="col">No Meja</th>
                     <th scope="col">total</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Waktu</th>
                 </tr>
             </thead>
             <tbody>

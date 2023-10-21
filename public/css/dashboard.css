@@ -1,6 +1,12 @@
 body {
   font-size: .875rem;
 }
+/* header{
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 5px 0px 5px 200px ;
+} */
 h3{
   margin: 10px 0px;
 }
@@ -12,6 +18,9 @@ h3{
 /* #sidebarMenu:hover{
   width: 40px;
 } */
+a {
+  background-color: #2470dc;
+}
 
 /*
  * Sidebar
@@ -57,6 +66,9 @@ h3{
   display: flex;
   justify-content: space-between;
   margin: 20px 0px;
+  padding: 10px;
+  box-shadow: 0px 2px 5px gray;
+  border-radius: 5px;
 }
 .search button{
   padding: 6px 10px;
@@ -67,6 +79,7 @@ h3{
 }
 .search input{
   padding: 5px 10px;
+  
   /* border-radius: 5px;
   border: 0;
   */
@@ -120,18 +133,19 @@ h3{
 .container-card{
   display: flex;
   justify-content: center;
+ 
 }
-.card{
+.card-date{
   height: 100px;
   width: 100%;
-  background-color: yellow;
+  background-color: white;
   margin: 20px 10px;
-  border: 0;
+  border-radius: 0px 5px 5px 0px;
   text-align: center;
   font-size: large;
-  box-shadow: 1px 2px gray;
+  box-shadow: 1px 2px 5px gray;
 }
-.card p{
+.card-date p{
   margin: 10px;
 }
 /* dropdown */
@@ -142,6 +156,31 @@ select{
   background-color: yellow;
 
 }
+/* .nav-link{
+  background-color: blue;
+  margin-top: 5px;
+  border-radius: 0px 20px 20px 0px;
+  margin-right: 5px;
+} */
+.nav-link:hover{
+  /* background-color: gray; */
+  /* margin-top: 5px; */
+  /* padding-left: 20px; */
+  border-radius: 0px 5px 5px 0px;  
+  box-shadow: 1px 2px 5px gray;
+  margin-right: 5px;
+}
+
+/* ORDERS */
+.buttom-action-orders{
+  margin: 5px;
+  border: 0;
+  border-radius: 5px;
+}
+/* p{
+  border: 1px solid black;
+  margin: 2px;
+} */
 @media screen and(max-width:600px){
   .container-card{
     display: block;

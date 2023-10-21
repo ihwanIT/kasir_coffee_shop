@@ -37,9 +37,12 @@ Route::get('/MenuProduk', function () {
     return view('kasir.menuProduk');
 })->name('kasir.menuProduk');
 //  karyawan
-Route::get('/data-karyawan', function () {
-    return view('kasir.karyawan');
-})->name('kasir.karyawanCaffee');
+Route::get('/transaksi', function () {
+    return view('kasir.transaksi');
+})->name('kasir.transaksi');
+Route::get('/perseiaan', function () {
+    return view('kasir.persediaan');
+})->name('kasir.persediaan');
 //  laporan
 Route::get('/laporan', function () {
     return view('kasir.laporan');
