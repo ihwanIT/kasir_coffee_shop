@@ -1,7 +1,10 @@
 @extends('layout.mainKasir')
 @section('orders')
+@php
+$order = 'red'; // Mengatur warna teks menjadi putih
+@endphp
     {{-- modal --}}
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">

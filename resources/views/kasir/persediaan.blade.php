@@ -1,5 +1,8 @@
 @extends('layout.mainKasir')
 @section('persediaan')
+@php
+$persediaan = 'red'; // Mengatur warna teks menjadi putih
+@endphp
     <h3>Persediaan</h3>
     {{-- buttom search --}}
     <div class="search">

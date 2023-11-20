@@ -133,16 +133,51 @@ a {
 .container-card{
   display: flex;
   justify-content: center;
- 
+}
+/* .custom-modal-size{
+  width: 700px;
+  height: 500px;
+} */
+.has-submenu{
+  cursor: pointer;
+}
+/* .kotak{
+  width: 10px;
+  height: 10px;
+  background-color: #2470dc;
+    transform: rotate(90deg);
+  margin-left: 20px;
+} */
+/* .sub-transaksi{
+
+} */
+.submenu{
+  /* margin-left: 50px; */
+  display: none;
+  background-color: rgb(27, 27, 27);
+  text-decoration: none;
+  transition:0.3s ease;
+  /* transform: rotate(90deg); */
+  
+}
+.table-dashboard{
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px gray;
 }
 .card-date{
   height: 100px;
   width: 100%;
   background-color: white;
+  /* background: linear-gradient(to right, red, white, white, white, white); */
   margin: 20px 10px;
   border-radius: 0px 5px 5px 0px;
-  text-align: center;
-  font-size: large;
+  font-size:medium;
+  display:flex; 
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0px 10px 0px 0px;
   box-shadow: 1px 2px 5px gray;
 }
 .card-date p{
@@ -157,19 +192,14 @@ select{
 
 }
 /* .nav-link{
-  background-color: blue;
-  margin-top: 5px;
-  border-radius: 0px 20px 20px 0px;
-  margin-right: 5px;
-} */
-.nav-link:hover{
-  /* background-color: gray; */
-  /* margin-top: 5px; */
-  /* padding-left: 20px; */
-  border-radius: 0px 5px 5px 0px;  
-  box-shadow: 1px 2px 5px gray;
-  margin-right: 5px;
+  color: white;
+  background-color: crimson;
 }
+.nav-link::after{
+  color:chartreuse;
+  background-color: #9da0a3;
+
+} */
 
 /* ORDERS */
 .buttom-action-orders{
@@ -186,3 +216,46 @@ select{
     display: block;
   }
 }
+
+
+/* <aside class="sidebar">
+        <ul class="menu">
+          <li><a href="#">Home</a></li>
+          <li class="has-submenu">
+            <a href="#">Products</a>
+            <ul class="submenu">
+              <li><a href="#">Product 1</a></li>
+              <li><a href="#">Product 2</a></li>
+              <li><a href="#">Product 3</a></li>
+            </ul>
+          </li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+      </aside>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+  const submenuItems = document.querySelectorAll('.has-submenu');
+
+  submenuItems.forEach(item => {
+    item.addEventListener('click', function(event) {
+      event.preventDefault();
+      const submenu = this.querySelector('.submenu');
+      if (submenu.style.display === 'block') {
+        submenu.style.display = 'none';
+      } else {
+        closeAllSubmenus();
+        submenu.style.display = 'block';
+      }
+    });
+  });
+
+  function closeAllSubmenus() {
+    const submenus = document.querySelectorAll('.submenu');
+    submenus.forEach(submenu => {
+      submenu.style.display = 'none';
+    });
+  }
+});
+
+      </script> */

@@ -1,9 +1,6 @@
 @extends('layout.mainKasir')
-@section('karyawan')
-@php
-$transaksi = 'red'; // Mengatur warna teks menjadi putih
-@endphp
-    <h3>Transaksi</h3>
+@section('penjualan')
+    <h3>Penjualan</h3>
     {{-- search --}}
     <div class="search">
         <div>
@@ -13,7 +10,7 @@ $transaksi = 'red'; // Mengatur warna teks menjadi putih
 
         </div>
         <form action="" method="post">
-            <input type="search" name="" id="" placeholder="Cari Transaksi">
+            <input type="search" name="" id="" placeholder="Cari Penjualan">
             <button type="submit">Cari</button>
         </form>
     </div>
@@ -49,8 +46,36 @@ $transaksi = 'red'; // Mengatur warna teks menjadi putih
                 <td>text</td>
                 <td>text</td>
             </tr>
-
-
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>1</td>
+                <td>alin</td>
+                <td>data</td>
+                <td>placeholder</td>
+                <td>text</td>
+                <td>text</td>
+                <td>text</td>
+                <td>text</td>
+                <td>text</td>
+                <td>text</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>1</td>
+                <td>alin</td>
+                <td>data</td>
+                <td>placeholder</td>
+                <td>text</td>
+                <td>text</td>
+                <td>text</td>
+                <td>text</td>
+                <td>text</td>
+                <td>text</td>
+            </tr>
         </tbody>
     </table>
+    {{-- grafik penjualan --}}
+    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+
+    {{-- end --}}
 @endsection

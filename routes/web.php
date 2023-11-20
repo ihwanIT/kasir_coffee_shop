@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\auth\loginController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\crud_menu;
+use App\Models\kasir\menu;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,15 +14,13 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // menu costumer
-Route::get('/', function () {
-    return view('costumer.menu');
-});
+// Route::get('/', function () {
+//     return view('costumer.menu');
+// });
+// admin login
+Route::get('/', [loginController::class, 'index'])->name('auth.login');
+Route::post('/login', [loginController::class, 'login'])->name('auth.loginValidation');
 
 // admin dashboard
 Route::get('/dashboard', function () {
@@ -33,17 +33,25 @@ Route::get('/orders', function () {
 // admin menu
 
 // menu kasir
-Route::get('/MenuProduk', function () {
-    return view('kasir.menuProduk');
-})->name('kasir.menuProduk');
-//  karyawan
+Route::resource('MenuProduk','App\Http\Controllers\crud_menu');
+
+
+//  transaksi
 Route::get('/transaksi', function () {
     return view('kasir.transaksi');
 })->name('kasir.transaksi');
-Route::get('/perseiaan', function () {
+// persediaan
+Route::get('/persediaan', function () {
     return view('kasir.persediaan');
 })->name('kasir.persediaan');
+// penjualan
+Route::get('/penjualan', function () {
+    return view('kasir.penjualan');
+})->name('kasir.penjualan');
 //  laporan
+Route::get('/admin', function () {
+    return view('kasir.admin');
+})->name('kasir.admin');
 Route::get('/laporan', function () {
     return view('kasir.laporan');
 })->name('kasir.laporan');
