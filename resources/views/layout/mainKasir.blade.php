@@ -129,7 +129,7 @@
                             </a>
                         </li>
                         <li class="nav-item order">
-                            <a class="nav-link" href="{{ route('kasir.orders') }}">
+                            <a class="nav-link" href="/orders">
                                 <span data-feather="file" class="align-text-bottom"><img src="assets/icon/order5.png"
                                         alt="orders"></span>
                                 
@@ -295,7 +295,39 @@
   });
 });
 
+// triger update data menu modal boostraph
   </script>
+
+      {{-- script triger edit data menu --}}
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var editButtons = document.querySelectorAll('.btn-edit');
+            
+            editButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var id = this.getAttribute('data-myid');
+                    var nama = this.getAttribute('data-myname');
+                    var kategori = this.getAttribute('data-mykategori');
+                    var harga = this.getAttribute('data-myharga');
+    
+                    // modal edit menu
+                    var modalEdit = document.getElementById('edit');
+                    modalEdit.querySelector('#id_menu').value = id;
+                    modalEdit.querySelector('#nama').value = nama;
+                    modalEdit.querySelector('#kategori').value = kategori;
+                    modalEdit.querySelector('#harga').value = harga;
+
+                    // modal hapus menu
+                    var modalHapus = document.getElementById('hapus');
+                    modalHapus.querySelector('#id_menu').value = id;
+                    modalHapus.querySelector('#nama').value = nama;
+                    modalHapus.querySelector('#kategori').value = kategori;
+                    modalHapus.querySelector('#harga').value = harga;
+                });
+            });
+        });
+    </script>
+    {{-- end triger edit data menu --}}
 
 </body>
 

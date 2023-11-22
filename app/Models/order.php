@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Models\kasir;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class menu extends Model
+class order extends Model
 {
     use HasFactory;
     protected $fillable =[
-        "nama",
-        "kategori",
-        "harga",
+        "nama_pembeli",
+        "nama_orderan",
+        "keterangan",
+        "jumlah"
     ];
 
     public function scopeFilter($query, array $filters){
         if(isset($filters['search']) ? $filters['search'] : false){
-            $query->where('nama', 'like', '%'. $filters['search']. '%');
+            $query->where('nama_pembeli', 'like', '%'. $filters['search']. '%');
             
         }
     }

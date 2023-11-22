@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\menu;
+use App\Models\kasir\menu;
 use GuzzleHttp\Promise\Create;
+use illuminate\support\Str;
 
 class crud_menu extends Controller
 {
@@ -13,8 +14,16 @@ class crud_menu extends Controller
      */
     public function index()
     {
-        $menus = menu::all();
-        return view('kasir.menuProduk', ['menu' => $menus]);  
+        // dd(request('search'));
+        // $datamenu = menu::latest();
+
+        return view('kasir.menuProduk', [
+            // 'menu' => $datamenu->get()
+            'menu' => menu::latest()->filter(request(['search']))->Paginate(10)
+        ]);
+
+        // return back()->withErrors(['error' => 'error']);
+ 
     }
 
     /**
@@ -38,12 +47,16 @@ class crud_menu extends Controller
      */
     public function store(Request $request)
     {
+        $randomId = mt_rand(100000, 999999);
+
         $menus = new menu();
+        $menus->id = $randomId;
         $menus->nama = $request->input('nama');
         $menus->kategori = $request->input('kategori');
         $menus->harga = $request->input('harga');
         $menus->save();
-        return redirect('/MenuProduk')->with('success','success');
+        return redirect()->back()->with('success','success');
+        // return redirect()->route('crud_menu.index')->with('success','success');
     }
 
     /**
@@ -57,33 +70,29 @@ class crud_menu extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id_menu)
-    {
-        $menu = menu::find($id_menu);
-        return view('', ['menus'=>$menu]);
-    }
-
+    // public function edit(string $id_menu)
+    // {
+    //     $DataMenu = menu::find($id_menu);
+    //     return view('crud_menu.edit', compact('DataMenu'));
+    // }
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id_menu)
+    public function update(Request $request)
     {
-        $menu = menu::find($id_menu);
-        $menu->nama = $request->input('nama');
-        $menu->kategori = $request->input('kategori');
-        $menu->harga = $request->input('harga');
-        $menu->save();
-        return redirect('/MenuProduk')->with('success' , 'success');
+        $menu = menu::findOrFail($request->id_menu);
+        $menu->update($request->all());
+        return back()->with('success' , 'success');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id_menu)
+    public function destroy(Request $request)
     {
-        $menu = menu::find($id_menu);
+        $menu = menu::find($request->id_menu);
         $menu->delete();
-        return redirect('/MenuProduk')->with('success','success');
+        return back()->with('success' , 'success');
 
     }
 }

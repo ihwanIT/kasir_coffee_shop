@@ -7,13 +7,12 @@ $textColor = 'red'; // Mengatur warna teks menjadi putih
     <div class="container-card">
         <div class="card-date" style=" border-left:30px solid blue; cursor: pointer;" data-bs-target="#penjualanharian" data-bs-toggle="modal">
             <p>
+                {{-- {{ $dataOrder->data }} --}}
                 Penjualan harian
                 <br>
                 120
             </p>
             <img src="assets/icon/paling-banyak-dibeli.png" alt="" width="40px" height="40px">
-
-            {{-- <p>120</p> --}}
 
         </div>
         <div class="card-date" style=" border-left:30px solid yellow; cursor:pointer;" data-bs-target="#banyakdibeli" data-bs-toggle="modal">
@@ -23,8 +22,6 @@ $textColor = 'red'; // Mengatur warna teks menjadi putih
             </p>
             <img src="assets/icon/paling-banyak-dibeli2.png" alt="" width="40px" height="40px">
 
-            {{-- <p>Es Teh</p> --}}
-
         </div>
         <div class="card-date" style=" border-left:30px solid green; cursor: pointer;" data-bs-target="#pendapatanharian" data-bs-toggle="modal">
             <p>Pendapatan harian
@@ -32,8 +29,6 @@ $textColor = 'red'; // Mengatur warna teks menjadi putih
                 500.000
             </p>
             <img src="assets/icon/pendapatan.png" alt="" width="40px" height="40px">
-
-            {{-- <p>500.000</p> --}}
 
         </div>
     </div>
@@ -359,10 +354,77 @@ $textColor = 'red'; // Mengatur warna teks menjadi putih
 </div>
     {{-- end --}}
 
-    {{-- table --}}
+    {{-- table data orderan yang belum diantar --}}
     
     <div class="table-responsive table-dashboard">
         <h5 style="text-align: center;">Order yang belum diantar</h5>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Pemesan</th>
+                    <th scope="col">Pesanan</th>
+                    <th scope="col">Jenis</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Jumlah</th>
+                    <th scope="col">Keterangan</th>
+                    <th scope="col">No Meja</th>
+                    <th scope="col">total</th>
+                    <th scope="col">Waktu</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>1,001</td>
+                    <td>alin</td>
+                    <td>data</td>
+                    <td>placeholder</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>1,001</td>
+                    <td>alin</td>
+                    <td>data</td>
+                    <td>placeholder</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>1,001</td>
+                    <td>alin</td>
+                    <td>data</td>
+                    <td>placeholder</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                    <td>text</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {{-- table data stok kopi kurang dari 5 cup --}}
+    
+    <div class="table-responsive table-dashboard">
+        <h5 style="text-align: center;">Stok kopi kurang dari 10 cup</h5>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>

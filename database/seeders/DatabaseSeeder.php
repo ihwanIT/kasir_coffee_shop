@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\kasir\menu;
+use App\Models\order;
 use App\Models\User;
 
 class DatabaseSeeder extends Seeder
@@ -43,6 +44,119 @@ class DatabaseSeeder extends Seeder
             'nama' => 'es jeruk',
             'kategori' => 'minuman',
             'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es teh',
+            'kategori' => 'minuman',
+            'harga' => '3.000',
+        ]);
+        menu::create([
+            'nama' => 'kopi hitam',
+            'kategori' => 'coffee',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es jeruk',
+            'kategori' => 'minuman',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es teh',
+            'kategori' => 'minuman',
+            'harga' => '3.000',
+        ]);
+        menu::create([
+            'nama' => 'kopi hitam',
+            'kategori' => 'coffee',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es jeruk',
+            'kategori' => 'minuman',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es teh',
+            'kategori' => 'minuman',
+            'harga' => '3.000',
+        ]);
+        menu::create([
+            'nama' => 'kopi hitam',
+            'kategori' => 'coffee',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es jeruk',
+            'kategori' => 'minuman',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es teh',
+            'kategori' => 'minuman',
+            'harga' => '3.000',
+        ]);
+        menu::create([
+            'nama' => 'kopi hitam',
+            'kategori' => 'coffee',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es jeruk',
+            'kategori' => 'minuman',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es teh',
+            'kategori' => 'minuman',
+            'harga' => '3.000',
+        ]);
+        menu::create([
+            'nama' => 'kopi hitam',
+            'kategori' => 'coffee',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es jeruk',
+            'kategori' => 'minuman',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es teh',
+            'kategori' => 'minuman',
+            'harga' => '3.000',
+        ]);
+        menu::create([
+            'nama' => 'kopi hitam',
+            'kategori' => 'coffee',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es jeruk',
+            'kategori' => 'minuman',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es teh',
+            'kategori' => 'minuman',
+            'harga' => '3.000',
+        ]);
+        menu::create([
+            'nama' => 'kopi hitam',
+            'kategori' => 'coffee',
+            'harga' => '5000',
+        ]);
+        menu::create([
+            'nama' => 'es jeruk',
+            'kategori' => 'minuman',
+            'harga' => '5000',
+        ]);
+
+        // orders
+        order::create([
+            "nama_pembeli" => 'bari',
+            "nama_orderan" => 'kopi hitam',
+            "keterangan" => 'gula di kurangin dikit',
+            "jumlah" => '5',
         ]);
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\auth\loginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\crud_menu;
+use App\Http\Controllers\crud_orders;
 use App\Models\kasir\menu;
 /*
 |--------------------------------------------------------------------------
@@ -27,14 +28,18 @@ Route::get('/dashboard', function () {
     return view('kasir.dashboard');
 })->name('kasir.dashboard');
 // admin order
-Route::get('/orders', function () {
-    return view('kasir.orders');
-})->name('kasir.orders');
+
+Route::resource('/orders','App\Http\Controllers\crud_orders');
+Route::put('/orders', [crud_orders::class, 'update']);
+Route::post('/ordersHapus', [crud_orders::class, 'destroy']);
+Route::post('/orders', [crud_orders::class, 'store'])->name('orders.create');
 // admin menu
 
 // menu kasir
-Route::resource('MenuProduk','App\Http\Controllers\crud_menu');
-
+Route::resource('/MenuProduk','App\Http\Controllers\crud_menu');
+Route::put('/MenuProduk', [crud_menu::class, 'update']);
+Route::post('/MenuProdukHapus', [crud_menu::class, 'destroy']);
+Route::post('/MenuProduk', [crud_menu::class, 'store'])->name('MenuProduk.create');
 
 //  transaksi
 Route::get('/transaksi', function () {

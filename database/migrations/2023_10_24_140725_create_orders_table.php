@@ -6,17 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    // /**
-    //  * Run the migrations.
-    //  */
-    // public function up(): void
-    // {
-    //     Schema::create('orders', function (Blueprint $table) {
-    //         $table->id('id_order');
-    //         $table->string('');
-    //         $table->timestamps();
-    //     });
-    // }
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('orders', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_pembeli');
+            $table->string('nama_orderan');
+            $table->string('keterangan');
+            $table->string('jumlah');
+            $table->timestamps();
+        });
+    }
 
     // /**
     //  * Reverse the migrations.
