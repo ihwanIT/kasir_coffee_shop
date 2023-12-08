@@ -3,81 +3,70 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Charts\OrdersChart;
 use App\Models\order;
 use App\Models\kasir\menu;
+use App\Services\LarapexChart;
 
 class crud_orders extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(ordersChart $orderChart)
     {
         $menus = menu::all();
         return view('kasir.orders', [
-            'menus' => [''],
-            'orders' => order::latest()->filter(request(['search']))->paginate(10)
+            'orderCard' =>$orderChart->build(),
+            'menus' => $menus,
+            'orders' => order::latest()->filter(request(['search_orders']))->paginate(10)
         ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $randomId = mt_rand(100000, 999999);
 
-        $orders = new order();
-        $orders->id = $randomId;
-        $orders->nama_pembeli = $request->input('name_costumer');
-        $orders->nama_orderan = $request->input('pesanan');
-        $orders->keterangan = $request->input('keterangan');
-        $orders->jumlah = $request->input('jumlah');
-        $orders->save();
-        return redirect()->back()->with('success','success');
+                // Ambil data dari request
+                $namaPembeli = $request->input('name_costumer');
+                $namaOrderan = $request->input('pesanan');
+                $keterangan = $request->input('keterangan');
+                $harga = $request->input('harga');
+                $jumlah = $request->input('jumlah');
+                $total = $request->input('total_harga_jual');
+        
+                // Cari menu berdasarkan nama_orderan
+                $menu = menu::where('nama', $namaOrderan)->first();
+        
+                // Jika menu ditemukan dan stok cukup
+                if ($menu && $menu->jumlah >= $jumlah) {
+                    // Kurangi stok menu
+                    $menu->jumlah -= $jumlah;
+                    $menu->save();
+        
+                    // Buat pesanan baru
+                    $order = Order::create([
+                        'nama_pembeli' => $namaPembeli,
+                        'nama_orderan' => $namaOrderan,
+                        'keterangan' => $keterangan,
+                        'harga' => $harga,
+                        'jumlah' => $jumlah,
+                        'total' => $total,
+                    ]);
+        
+                    return redirect()->back()->with('success','Pesanan berhasil dibuat');
+                }
+        
+                return redirect()->back()->withErrors('error','Stok kurang');
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update(Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        $menu = order::findOrFail($request->id_menu);
+        $menu = order::findOrFail($request->id);
         $menu->update($request->all());
         return back()->with('success' , 'success');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Request $request)
     {
-        $menu = order::find($request->id_menu);
+        $menu = order::find($request->id);
         $menu->delete();
         return back()->with('success' , 'success');
+
     }
 }

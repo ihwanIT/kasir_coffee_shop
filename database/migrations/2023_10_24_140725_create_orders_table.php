@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('nama_pembeli');
             $table->string('nama_orderan');
             $table->string('keterangan');
-            $table->string('jumlah');
+            $table->decimal('harga');
+            $table->integer('jumlah');
+            $table->decimal('total');
             $table->timestamps();
         });
     }

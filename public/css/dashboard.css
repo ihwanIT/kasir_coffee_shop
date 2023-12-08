@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap');
 body {
   font-size: .875rem;
 }
+.logo{
+  color: white;
+  text-align: center;
+  margin: 5px 10px;
+}
+
 /* header{
   width: 100%;
   background-color: black;
@@ -63,9 +71,10 @@ a {
   color: #727272;
 }
 .search{
+  background-color: white;
   display: flex;
-  justify-content: space-between;
-  margin: 20px 0px;
+  justify-content:space-between;
+  margin: 10px 0px;
   padding: 10px;
   box-shadow: 0px 2px 5px gray;
   border-radius: 5px;
@@ -83,6 +92,22 @@ a {
   /* border-radius: 5px;
   border: 0;
   */
+}
+.search-menu-order{
+  box-shadow: 0px 2px 5px gray;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 10px;
+  border: 0;
+}
+.orderan{
+  overflow-y: auto;
+  height: 100%;;
+  background-color: #2470dc;
+  width: 60%; background-color:white; 
+  padding:10px; 
+  margin:10px; 
+  border-radius:20px;
 }
 
 .sidebar .nav-link.active {
@@ -141,6 +166,7 @@ a {
 .has-submenu{
   cursor: pointer;
 }
+
 /* .kotak{
   width: 10px;
   height: 10px;
@@ -151,6 +177,15 @@ a {
 /* .sub-transaksi{
 
 } */
+.rotate {
+  transition: transform 0.3s ease-in-out;
+  transform: rotate(180deg);
+}
+
+/* .rotate.down {
+  transform: rotate(180deg);
+} */
+
 .submenu{
   /* margin-left: 50px; */
   display: none;
@@ -158,13 +193,46 @@ a {
   text-decoration: none;
   transition:0.3s ease;
   /* transform: rotate(90deg); */
+  /* justify-content: space-betwe */
   
 }
+.nav-item{
+  margin: 0px 10px;
+  border-radius: 15px;
+}
+.has-submenu{
+  margin: 0px 10px;
+  border-radius: 15px;
+}
 .table-dashboard{
-  margin-bottom: 20px;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px gray;
+  display: flex;
+  justify-content:space-between;
+  /* height: 100px; */
+}
+.table-stok-dashboard{
+  height: 250px;
+  overflow-y: auto;
+  -ms-overflow-style:none;
+  scrollbar-width: none;
+  position: relative;
+  background-color: white; 
+  width:40%; 
+  border-radius:30px; 
+  margin:10px; 
+  padding:10px;  
+  box-shadow: 1px 2px 5px gray;
+}
+.table-stok-dashboard button{
+  background-color: rgb(89, 176, 89); 
+  border:0; 
+  padding:10px; 
+  border-radius:20px; 
+  color:white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 10px;
+
 }
 .card-date{
   height: 100px;
@@ -172,7 +240,7 @@ a {
   background-color: white;
   /* background: linear-gradient(to right, red, white, white, white, white); */
   margin: 20px 10px;
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 20px;
   font-size:medium;
   display:flex; 
   justify-content: space-between; 
@@ -180,8 +248,27 @@ a {
   padding: 0px 10px 0px 0px;
   box-shadow: 1px 2px 5px gray;
 }
+.link-orderan{
+  background: linear-gradient(to top, #fefefe, #4926fa);
+  text-align: center;
+  /* height:100%;  */
+  background-color:white; 
+  padding:10px; margin:10px; 
+  border-radius:20px; 
+  /* width:100%;    */
+  box-shadow: 1px 2px 5px gray;
+}
 .card-date p{
   margin: 10px;
+}
+/* .span-card{
+  font-size: smaller;
+  font-family: 'Hind Siliguri', sans-serif;
+
+} */
+.card-date p span{
+  /*  */
+  font-family: 'Inter', sans-serif;
 }
 /* dropdown */
 select{
@@ -217,45 +304,120 @@ select{
   }
 }
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-/* <aside class="sidebar">
-        <ul class="menu">
-          <li><a href="#">Home</a></li>
-          <li class="has-submenu">
-            <a href="#">Products</a>
-            <ul class="submenu">
-              <li><a href="#">Product 1</a></li>
-              <li><a href="#">Product 2</a></li>
-              <li><a href="#">Product 3</a></li>
-            </ul>
-          </li>
-          <li><a href="#">About Us</a></li>
-        </ul>
-      </aside>
+.dropbtn {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
 
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-  const submenuItems = document.querySelectorAll('.has-submenu');
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
 
-  submenuItems.forEach(item => {
-    item.addEventListener('click', function(event) {
-      event.preventDefault();
-      const submenu = this.querySelector('.submenu');
-      if (submenu.style.display === 'block') {
-        submenu.style.display = 'none';
-      } else {
-        closeAllSubmenus();
-        submenu.style.display = 'block';
-      }
-    });
-  });
+.dropdown-content input[type="checkbox"] {
+  display: block;
+  margin: 5px;
+}
 
-  function closeAllSubmenus() {
-    const submenus = document.querySelectorAll('.submenu');
-    submenus.forEach(submenu => {
-      submenu.style.display = 'none';
-    });
-  }
-});
+.dropdown-content label {
+  margin-left: 25px;
+}
 
-      </script> */
+.show {
+  display: block;
+}
+
+
+/* LAPORAN */
+.laporan-card{
+  background-color: #2470dc;
+  padding: 5px;
+  margin: 10px 0px;
+  color: white;
+  border-radius: 5px;
+}
+
+/* daftar order */
+.container-daftar-order{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+
+}
+.daftar-order{
+  width: 60%;
+}
+.card-order{
+  margin: 20px 80px;
+  padding: 20px;
+}
+.pilih-menu{
+  display: flex;
+  justify-content: center;
+}
+.pilih-menu .card{
+  margin: 0px 10px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 20px;
+  border: 0;
+  width: 100%;
+}
+/* .card{
+  padding: 10px;
+} */
+/* .list-order .card{
+  margin: 10px 0px;
+  padding: 10px;
+} */
+
+.increment{
+  border: 0;
+  background-color: rgb(71, 71, 255);
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+.decrement{
+  border: 0;
+  background-color: rgb(71, 255, 126);
+  border-radius:20px;
+  padding: 5px 10px;
+}
+
+
+/* card scroll menu orders */
+/* Styling untuk container kartu */
+.card-container {
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  width: 100%;
+  display: flex; /* Menggunakan flexbox untuk menyusun kartu-kartu */
+  overflow-x: auto; /* Mengaktifkan scrolling horizontal saat konten melebihi lebar container */
+  white-space: nowrap; 
+  scrollbar-width: none; /* Menghilangkan scrollbar pada browser yang mendukung */
+  -ms-overflow-style: none; /* Menghilangkan scrollbar pada browser Microsoft */
+}
+/* .table-hover-dashboard{
+  overflow-y: auto;
+} */
+
+
+.cart{
+  background-color: white;
+  width: 40%;
+  padding: 10px;
+  margin: 10px 0px 0px 20px;
+  border-radius: 20px;
+}

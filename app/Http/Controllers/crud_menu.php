@@ -18,7 +18,6 @@ class crud_menu extends Controller
         // $datamenu = menu::latest();
 
         return view('kasir.menuProduk', [
-            // 'menu' => $datamenu->get()
             'menu' => menu::latest()->filter(request(['search']))->Paginate(10)
         ]);
 
@@ -54,6 +53,7 @@ class crud_menu extends Controller
         $menus->nama = $request->input('nama');
         $menus->kategori = $request->input('kategori');
         $menus->harga = $request->input('harga');
+        $menus->jumlah = $request->input('jumlah');
         $menus->save();
         return redirect()->back()->with('success','success');
         // return redirect()->route('crud_menu.index')->with('success','success');
