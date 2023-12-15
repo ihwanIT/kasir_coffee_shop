@@ -76,16 +76,6 @@ class DatabaseSeeder extends Seeder
             'harga' => 9000,
             'jumlah' => 40,
         ]);
-
-        // orders
-        order::create([
-            "nama_pembeli" => 'bari',
-            "nama_orderan" => 'kopi hitam',
-            "keterangan" => 'gula di kurangin dikit',
-            "harga" => '15000',
-            "jumlah" => '1',
-            "total" => '15000',
-        ]);
         // stok
         stok::create([
             "bahan_baku" => 'coklat bubuk',

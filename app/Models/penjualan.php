@@ -12,5 +12,9 @@ class penjualan extends Model
     protected $fillable = [
         'menu',
         'jumlah',
+        'uang',
+        'kembalian',
+        'total_harga',
     ];   
+    
 }

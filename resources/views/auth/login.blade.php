@@ -31,15 +31,6 @@
                     @enderror
                     </div>
                 </div>
-                {{-- <div class="mb-2">
-                    <label for="formGroupExampleInput2" class="form-label">Password</label>
-                    <input type="password" class="form-control @error('error') is-invalid @enderror" id="password" name="password" placeholder="Password" required>
-                    <div class="invalid-login">
-                        @error('error')
-                        {{ $message="masukan data yang benar!" }}
-                    @enderror
-                    </div>
-                </div> --}}
                 <div class="mb-2">
                     <label for="password">Password</label>
                     <div class="input-group">

@@ -2,80 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\OrdersChart;
 use App\Models\orderCard;
+use App\Models\kasir\menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class OrderCardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        // Ambil data yang dikirim dari JavaScript
-        $dataMenu = $request->input('menu');
-        $jumlah = $request->input('jumlah');
-        $subHarga = $request->input('sub_harga');
-        $totalHarga = $request->input('total_harga');
-        $keterangan = $request->input('keterangan');
+        // $randomId = str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT);
+        $randomString = Str::random(3); // Generate random string of length 3
+        $randomNumber = str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT); // Generate random number of length 3
+        $randomId = $randomString . $randomNumber; // Combine the string and number
 
-        // $randomId = mt_rand(100000, 999999);
-
-        $daftarOrder = orderCard::create([
-            'menu' => $dataMenu,
-            'jumlah' => $jumlah,
-            'sub_harga' => $subHarga,
-            'total_harga' =>$totalHarga,
-            'keterangan' => $keterangan
-        ]);
+        $order = new orderCard;
+        $order->id = $randomId;
+        $order->menu = $request->menu; // data menu yang dipesan
+        $order->jumlah = $request->jumlah; // Jumlah pesanan
+        $order->sub_harga = $request->sub_harga; // Jumlah pesanan
+        $order->total_harga = $request->total_harga; // Jumlah pesanan
+        $order->keterangan = $request->keterangan; // Jumlah pesanan
+        $order->save();
         return back()->with('success', 'Order berhasil ditambah !');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(orderCard $orderCard)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(orderCard $orderCard)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, orderCard $orderCard)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(orderCard $orderCard)
-    {
-        //
     }
 }

@@ -4,41 +4,44 @@
 @php
 $textColor = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
 @endphp
-<h4 style="background-color: rgb(78, 78, 255); margin:0px; color:white; padding:10px; border-radius:0px 0px 20px 20px;">Dashboard</h4>
     <div class="container-card">
         <div class="card-date" style=" border-left:30px solid rgb(155, 155, 254); cursor: pointer; " data-bs-target="#penjualanharian" data-bs-toggle="modal">
             <p>
-                Penjualan harian
+                <span style="font-size: 13px;">Penjualan harian</span>
                 <br>
-                @if($total_penjualans > 0)
-                <span class="span-card">
-                    {{ $total_penjualans }}
+                @if($totalQuantity > 0)
+                <span>
+                    {{ $totalQuantity }}
                     @else
                     <span>Tidak ada penjualan</span>
                     @endif
                 </span>
                 
             </p>
-            <img src="assets/icon/paling-banyak-dibeli.png" alt="" width="40px" height="40px">
+            <img src="assets/icon/db2.ico" alt="" width="40px" height="40px">
 
         </div>
         <div class="card-date" style=" border-left:30px solid rgb(255, 255, 132); cursor:pointer;" data-bs-target="#banyakdibeli" data-bs-toggle="modal">
             <p>
-                Banyak Dibeli harian
+                <span style="font-size: 13px;">Banyak Dibeli harian</span>
+        
                 <br>
-                @if(isset($orderWithHighestTotal))
-                    <span> {{ $orderWithHighestTotal->nama_orderan }}</span>
+                @if(isset($mostOrderedMenu))
+                    <span>Menu : {{ $mostOrderedMenu }}</span>
+                    <br>
+                    <span>Jumlah : {{ $maxQuantity }}</span>
                 @else
                     <span>Tidak ada Penjualan</span>
                 @endif
                 </span>
             </p>
-            <img src="assets/icon/paling-banyak-dibeli2.png" alt="" width="40px" height="40px">
+            <img src="assets/icon/db1.ico" alt="" width="40px" height="40px">
 
         </div>
         <div class="card-date" style=" border-left:30px solid rgb(114, 202, 114); cursor: pointer;" data-bs-target="#pendapatanharian" data-bs-toggle="modal">
             <p>
-                Pendapatan harian
+                <span style="font-size: 13px;">    Pendapatan harian</span>
+            
                 <br>
                 @if($pendapatan_penjualans > 0)
                 <span>
@@ -48,7 +51,7 @@ $textColor = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
                 @endif
                 </span>
             </p>
-            <img src="assets/icon/pendapatan.png" alt="" width="40px" height="40px">
+            <img src="assets/icon/db3.ico" alt="" width="40px" height="40px">
 
         </div>
     </div>
@@ -60,8 +63,8 @@ $textColor = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
         <div class="modal-content">
             <div class="modal-header" style="background-color: rgb(253, 253, 125);">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Paling Banyak Dibeli :
-                    @if(isset($orderWithHighestTotal))
-                    <span> {{ $orderWithHighestTotal->nama_orderan }}</span>
+                    @if(isset($mostOrderedMenu))
+                    <span> {{ $mostOrderedMenu}}</span>
                 @else
                     <span>Tidak ada orderan pada hari ini.</span>
                 @endif
@@ -69,11 +72,11 @@ $textColor = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="table-responsive">
-                @if($orders->count() > 0)
+                @if($dataOrderTable->count() > 0)
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">No</th>
+                            <th scope="col">No Transaksi</th>
                             <th scope="col">Nama menu</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Jumlah penjualan</th>
@@ -82,28 +85,26 @@ $textColor = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($orders as $item)
+                        @foreach ($dataOrderTable as $item)
                         <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->nama_orderan }}</td>
-                        <td>@currency($item->harga)</td>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->menu }}</td>
+                        <td>{{ $item->sub_harga}}</td>
                         <td>{{ $item->jumlah }}</td>
-                        <td>@currency($item->total)</td>
+                        <td>@currency($item->total_harga)</td>
                         <td>{{ $item->created_at->format('d-m-Y') }}</td>
                         @endforeach
                     </tr>
                     </tbody>
                 </table>
                 @else
-                <center style="margin: 20px 0px;"><p>Tidak ada data penjualan hari ini.</p></center>
-                
+                <center style="margin: 20px 0px;"><p>Tidak ada data penjualan hari ini.</p></center> 
             @endif
-        
             </div>
 
             {{-- end --}}
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: rgb(213, 213, 110); border:0; color:black;">Ok</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: rgb(253, 253, 125); border:0; color:black;">Ok</button>
             </div>
             </form>
         </div>
@@ -117,16 +118,16 @@ $textColor = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
         <div class="modal-content">
             <div class="modal-header" style="background-color: rgb(102, 102, 190); color:white;">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Penjualan Harian
-                    <span> : {{ $total_penjualans }}</span>
+                    <span> : {{ $totalQuantity }}</span>
                 </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="table-responsive">
-                @if($orders->count() > 0)
+                @if($dataOrderTable->count() > 0)
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">No</th>
+                            <th scope="col">No Transaksi</th>
                             <th scope="col">Nama menu</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Jumlah penjualan</th>
@@ -135,23 +136,21 @@ $textColor = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($orders as $item)
+                        @foreach ($dataOrderTable as $item)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->nama_orderan }}</td>
-                            <td>@currency($item->harga)</td>
-                            <td>{{ $item->jumlah }}</td>
-                            <td>@currency($item->total)</td>
-                            <td>{{ $item->created_at->format('d-m-Y') }}</td>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->menu }}</td>
+                        <td>{{ $item->sub_harga}}</td>
+                        <td>{{ $item->jumlah }}</td>
+                        <td>@currency($item->total_harga)</td>
+                        <td>{{ $item->created_at->format('d-m-Y') }}</td>
                         @endforeach
                     </tr>
                     </tbody>
                 </table>
                 @else
-                <center style="margin: 20px 0px;"><p>Tidak ada data penjualan hari ini.</p></center>
-                
+                <center style="margin: 20px 0px;"><p>Tidak ada data penjualan hari ini.</p></center> 
             @endif
-        
             </div>
 
             {{-- end --}}
@@ -175,11 +174,11 @@ $textColor = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="table-responsive">
-                @if($orders->count() > 0)
+                @if($dataOrderTable->count() > 0)
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">No</th>
+                            <th scope="col">No Transaksi</th>
                             <th scope="col">Nama menu</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Jumlah penjualan</th>
@@ -188,23 +187,21 @@ $textColor = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($orders as $item)
+                        @foreach ($dataOrderTable as $item)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->nama_orderan }}</td>
-                            <td>@currency($item->harga)</td>
-                            <td>{{ $item->jumlah }}</td>
-                            <td>@currency($item->total)</td>
-                            <td>{{ $item->created_at->format('d-m-Y') }}</td>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->menu }}</td>
+                        <td>{{ $item->sub_harga}}</td>
+                        <td>{{ $item->jumlah }}</td>
+                        <td>@currency($item->total_harga)</td>
+                        <td>{{ $item->created_at->format('d-m-Y') }}</td>
                         @endforeach
                     </tr>
                     </tbody>
                 </table>
                 @else
-                <center style="margin: 20px 0px;"><p>Tidak ada data penjualan hari ini.</p></center>
-                
+                <center style="margin: 20px 0px;"><p>Tidak ada data penjualan hari ini.</p></center> 
             @endif
-        
             </div>
 
             {{-- end --}}
@@ -224,7 +221,7 @@ $textColor = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
     <div class="table-responsive table-dashboard">
         <div class="table-stok-dashboard">
 
-        <h5 style="text-align: center;">Stok kurang dari 10 cup</h5>
+        <h5 style="text-align: center;">Stok kurang dari 10</h5>
         @if($lowStok->count() > 0)
         <table class="table table-striped table-hover-dashboard">
             <thead>
@@ -251,52 +248,61 @@ $textColor = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
         @else
         <center style="margin: 20px 0px;"><p>Stok masih mencukupi.</p></center>
     @endif
+    {{ $lowStok->links() }}
+    <br>
     <a href="/MenuProduk">
     <button>Tambah <i class="fa-solid fa-circle-plus"></i></button>
 </a>
+
 </div>
     {{-- ========== --}}
        <div class="card" style="padding: 20px;width:60%; border-radius:20px; margin:10px; border:0;">
 
-    {!! $orderCard->container() !!}
+        {!! $orderCard->container() !!}
 
-<script src="{{ $orderCard->cdn() }}"></script>
-
-{{ $orderCard->script() }}
+        <script src="{{ $orderCard->cdn() }}"></script>
+        
+        {{ $orderCard->script() }}
 </div>
 
     </div>
 
     <div class="daftar-orderan" style="display: flex;">
-        <div class="orderan" style="" >
-            <h5 style="text-align: center;">Orderan belum diantar</h5>
-            @if($lowStok->count() > 0)
+        <div class="orderan">
+            <h5 style="text-align: center;">Orderan belum Selesai</h5>
+            @if($orderChard->count() > 0)
             <table class="table table-striped table-hover">
                 
                 <thead>
                     <tr>
-                        {{-- <th scope="col">No</th> --}}
-                        <th scope="col">Nama</th>
-                        {{-- <th scope="col">Harga</th> --}}
-                        <th scope="col">Stok</th>
-                        <th scope="col">Tanggal akhir stok</th>
+                        <th scope="col">Menu</th>
+                        <th scope="col">Jumlah</th>
+                        <th scope="col">Sub Total</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Keterangan</th>
+                        <th scope="col">Tanggal</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($lowStok as $item)
+                    @foreach ($orderChard as $item)
                     <tr>
-                    {{-- <td>{{ $loop->iteration }}</td> --}}
-                    <td>{{ $item->nama }}</td>
-                    {{-- <td>@currency($item->harga) </td> --}}
+                    <td>{{ $item->menu }}</td>
                     <td>{{ $item->jumlah }}</td>
+                    <td>{{ $item->sub_harga }}</td>
+                    <td>@currency($item->total_harga)</td>
+                    <td>{{ $item->keterangan }}</td>
                     <td>{{ $item->created_at->format('d-m-Y') }}</td>
                     @endforeach
                 </tr>
                 </tbody>
             </table>
             @else
-            <center style="margin: 20px 0px;"><p>Stok masih mencukupi.</p></center>
+            <center style="margin: 20px 0px;"><p>Tidak ada orderan.</p></center>
         @endif
+        {{ $orderChard->links() }}
+        <a href="/transaksi" style="text-decoration: none; background:none;">
+            <button style="background-color: #51ca59; border:0; border-radius:20px; padding:10px 20px;">Selesaikan Orderan <i class="fa-solid fa-clipboard-check"></i> </button>
+        </a>
         </div>
         <div class="data-penjualan-seluruh" style=" width:40%; background-color:white; padding:10px; margin:10px; border-radius:20px; text-align:center; height:100%;">
             <b>Data penjualan sampai dengan Tanggal : {{ $tanggal }}</b>
@@ -304,55 +310,22 @@ $textColor = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
         <div class="link-orderan" style="background: linear-gradient(to top, #fefefe, #7e64ff);" >
             Penjualan 
             <br>
-            <b>{{ $totalPenjualan }}</b>
+            <b>{{ $totalQuantityAll }}</b>
         </div>
         <div class="link-orderan" style="background: linear-gradient(to top, #fefefe, #e3ff74);">
             Banyak Dibeli 
             <br>
-            <b>{{ $totalBanyakDibeli }}</b>
+            <b>{{ $mostOrderedMenuAll }}</b>
+            <br>
+            <b>{{ $maxQuantityAll }}</b>
+
         </div>
         <div class="link-orderan" style="  background: linear-gradient(to top, #fefefe, #87fe8f);">
             Pendapatan 
             <br>
-            <b>@currency($totalPendapatan)</b>
+            <b>@currency($pendapatan_penjualanBulanan)</b>
         </div>
     </div>
     </div>
     </div>
-
-
-    <!-- resources/views/menu_items.blade.php -->
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Menu Items</title>
-</head>
-<body>
-    <h1>Menu Items</h1>
-
-    @foreach ($orderCards as $orderCard)
-        <h2>Order ID: {{ $orderCard->id }}</h2>
-        <ul>
-            @php
-                $menuItems = explode(', ', $orderCard->menu);
-                $quantities = explode(', ', $orderCard->jumlah);
-            @endphp
-
-            @foreach ($menuItems as $index => $menuItem)
-            <li>{{ $menuItem }} - Quantity: {{ $quantities[$index] }}</li>
-            @endforeach
-            {{-- @foreach ($jumlahItems as $menuItem)
-                <li>{{ $menuItem }}</li>
-            @endforeach --}}
-        </ul>
-    @endforeach
-
-   data : {{ $totalQuantity }}
-</body>
-</html>
-
- 
-
-
 @endsection

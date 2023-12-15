@@ -28,18 +28,41 @@ class adminController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // public function store(Request $request)
+    // {
+    //     return  $request->file('image_admin')->store('menu-image');
+    //     $randomId = mt_rand(100000, 999999);
+
+    //     $menus = new user();
+    //     $menus->id = $randomId;
+    //     $menus->nama = $request->input('nama');
+    //     $menus->email = $request->input('email');
+    //     $menus->username = $request->input('username');
+    //     $menus->password = $request->input('password');
+    //     $menus->image = $request->file('image_admin')->store('menu-image');
+    //     $menus->save();
+    //     return redirect()->back()->with('success','success');
+    // }
     public function store(Request $request)
     {
-        $randomId = mt_rand(100000, 999999);
+        $validateData = $request->validate([
+            'nama' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'email' => 'required|email',
+            'username' => 'required|min:5',
+            'password' => 'required|min:8'
+        ]);
 
-        $menus = new user();
-        $menus->id = $randomId;
-        $menus->nama = $request->input('nama');
-        $menus->email = $request->input('email');
-        $menus->username = $request->input('username');
-        $menus->password = $request->input('password');
-        $menus->save();
-        return redirect()->back()->with('success','success');
+        if ($request->file('image')) {
+            $validateData['image'] = $request->file('image')->store('admin-images');
+        }
+        $user = User::create($validateData);
+
+        if ($user) {
+            return back()->with('success', 'Data berhasil disimpan.');
+        } else {
+            return back()->withErrors('Gagal menyimpan data. Silakan coba lagi.');
+        }
     }
 
     /**

@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
             $table->string('menu'); 
-            $table->integer('jumlah');
+            $table->string('jumlah');
+            $table->integer('uang');
+            $table->string('kembalian');
+            $table->integer('total_harga');
             $table->timestamps();
         });
     }

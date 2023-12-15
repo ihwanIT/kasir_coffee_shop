@@ -16,40 +16,32 @@
     </center>
     
     <p>- PENJUALAN</p>
-      <table class="table table-bordered">
-        <thead>
+    <table  class="table table-bordered">
+      <thead>
           <tr>
-            <th scope="col">No</th>
-            <th scope="col">Nama Menu</th>
-            <th scope="col">Jumlah penjualan</th>
-            <th scope="col">Harga penjualan satuan</th>
-            <th scope="col">Total</th>
-            <th scope="col">Tanggal</th>
+              <th>Menu</th>
+              <th>Total Penjualan</th>
+              <th>Total Pendapatan</th>
+              <th>Tanggal Penjualan</th>
           </tr>
-          </thead>
-         <tbody> 
+      </thead>
+      <tbody >
+          @foreach($laporanPenjualan as $data)
+              <tr>
+                  <td>{{ $data['menu'] }}</td>
+                  <td>{{ $data['total_jumlah'] }}</td>
+                  <td>@currency($data['total_pendapatan'])  </td>
+                  <td>{{ $data['tanggal'] }}</td>
+              </tr>
+          @endforeach
           <tr>
-            @foreach ($orders as $item_menu)
-            <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $item_menu->nama_orderan }}</td>
-                <td>{{ $item_menu->jumlah }}</td>
-                <td>@currency($item_menu->harga) </td>
-                <td>@currency($item_menu->total)</td>
-                <td>{{ $item_menu->created_at->format('d-m-Y') }}</td>
-            </tr>
-        @endforeach
-        <tr>
-            <td>Total:</td>
-            <td></td>
+            <td>Total :</td>
             <td>{{ $totalPembelian }}</td>
+            <td>@currency($totalHarga)</td>
             <td></td>
-            <td>@currency($totalHarga) </td>
-            <td></td>
-        </tr>
           </tr>
-          </tbody>
-      </table>
+      </tbody>
+  </table>
 
       <P>- PENGELUARAN</P>
       <table class="table table-bordered">
@@ -69,8 +61,6 @@
         <tbody>
             @foreach ($stoks as $item_stok)
                 <tr>
-                    {{-- <td><input type="checkbox" name="" id=""></td> --}}
-                    {{-- <td>{{ $loop->iteration }}</td> --}}
                     <td>{{ $item_stok->id }}</td>
                     <td>{{ $item_stok->bahan_baku }}</td>
                     <td>{{ $item_stok->jumlah_stok }}</td>
@@ -83,7 +73,6 @@
             <tr>
               <td>Total:</td>
               <td></td>
-              {{-- <td>{{ $Totalstok }}</td> --}}
               <td></td>
               <td></td>
               <td> </td>
@@ -118,12 +107,6 @@
 
         </tbody>
     </table>
-
-
-
-
-
-    {{-- <P>TOTAL BAHAN BAKU = <b>{{ $Totalstok }}</b></P> --}}
    
     <p>Pendapatan :</p>
      <div class="card-laporana" style="padding: 0px 50px;">
@@ -132,21 +115,11 @@
   </div>
     <p>Pengeluaran : </p>
     <P style="padding: 0px 50px;"> 
-    Total pengeluaran = <b>@currency($TotalPengeluaran)</b></P>
-
     <p>Hasil :</p>
-
-
-    <b>@currency($totalHarga) &plus; @currency($TotalPengeluaran) <br>
+    <b>@currency($totalHarga) &minus; @currency($TotalPengeluaran) <br>
     ------------------------------------- <br>
-
     = @currency($totalLabaBersih)
   </b>
-    <br>
-    {{ $data }} = <b>@currency($totalLabaBersih)</b> 
- 
-
-    {{-- Rugi = {{ $datarugi }} --}}
         
     {{-- fungsi print --}}
     <script>

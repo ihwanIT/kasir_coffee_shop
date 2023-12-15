@@ -3,12 +3,8 @@
 namespace App\Charts;
 
 use ConsoleTVs\Charts\Classes\Chartjs\Chart;
-// use ArielMejiaDev\LarapexCharts\LineChart;
-// use ArielMejieaDev\LarapexCharts\LarapexChart;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
-
-
-use App\Models\order;
+use App\Models\penjualan;
 
 class OrdersChart extends Chart
 {
@@ -19,33 +15,40 @@ class OrdersChart extends Chart
     }
 
     public function build()
-{
-        // Array label bulan dari Januari hingga Desember
-        $labels = [
-            'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
-        ];
-    
-        // Mengambil data order per bulan dari database
-        $dataOrders = Order::selectRaw('MONTH(created_at) as month, SUM(jumlah) as total_jumlah')
-                        ->groupBy('month')
-                        ->get();
-    
-        // Inisialisasi data penjualan untuk setiap bulan
-        $data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // Mengisi dengan nol untuk setiap bulan
-    
-        // Memasukkan data penjualan yang diambil dari database ke dalam array data
-        foreach ($dataOrders as $order) {
-            $monthIndex = $order->month - 1; // Index array dimulai dari 0, bulan dimulai dari 1
-            $data[$monthIndex] = $order->total_jumlah;
-        }
-    
-        return $this->chart->LineChart()
-            ->setTitle('Data Penjualan Bulanan')
-            ->setHeight(200)
-            ->setSubtitle(date('Y'))
-            ->addData('Total Penjualan', $data)
-            ->setLabels($labels);
-        
-}
+    {
 
+        // ================================
+        $months = [];
+        $totalSales = [];
+
+        // Loop untuk setiap bulan (dalam contoh ini, bulan Januari hingga Desember)
+        for ($month = 1; $month <= 12; $month++) {
+            $orderCards = penjualan::whereMonth('created_at', $month)->get();
+            $total = 0;
+
+            // Hitung total penjualan per bulan
+            foreach ($orderCards as $orderCard) {
+                $quantities = explode('-', $orderCard->jumlah);
+
+                foreach ($quantities as $quantity) {
+                    $total += (int)$quantity;
+                }
+            }
+
+            // Simpan nama bulan dan total penjualan
+            $months[] = date("F", mktime(0, 0, 0, $month, 1));
+            $totalSales[] = $total;
+        }
+
+        // Siapkan data untuk grafik
+        return $this->chart->LineChart()
+            ->setTitle('Data penjualan Bulanan')
+            ->setSubtitle(date('Y'))
+            ->setHeight(200)
+            ->setColors(['#ffc63b', '#ff6384', 'black'])
+            ->addData('Total Penjualan Bulanan', $totalSales) // Menggunakan addData dengan nama string dan data array
+            ->setXAxis($months)
+            ->setGrid()
+            ->setMarkers(['#FF5722', '#E040FB'], 7, 10);
+    }
 }

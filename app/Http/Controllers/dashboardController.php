@@ -1,73 +1,134 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Models\penjualan;
-use App\Models\orderCard;
-use App\Models\order;
 use Carbon\Carbon;
 use App\Models\kasir\menu;
 use App\Charts\OrdersChart;
+use App\Models\penjualan;
+use App\Models\orderCard;
 
 
 class dashboardController extends Controller
 {
     public function index(ordersChart $orderChart){
-
-
-        // penjualan harian
-        $total_penjualan = order::whereDate('created_at', Carbon::today())->sum('jumlah');
-        $penjualanTotal = order::get()->sum('jumlah');
-        // pendapatan harian
-        $pendapatan_penjualan = order::whereDate('created_at', Carbon::today())->sum('total');
-        $totalPendapatan = order::get()->sum('total');
-        $orders = order::whereDate('created_at', Carbon::today())->get();
-
-        $lowStockMenu = menu::where('jumlah', '<', 10)->get();
-
+        // fungsi hari real-time dengan carbon
         $today = Carbon::today();
-        $orderWithHighestTotal = Order::select('nama_orderan', order::raw('SUM(total) as total_penjualan'))
-        ->whereDate('created_at', $today)
-        ->groupBy('nama_orderan')
-        ->orderByDesc('total_penjualan')
-        ->first();
+        // total pendapatan RP harian
+        $pendapatan_penjualanHarian = penjualan::whereDate('created_at', $today)->sum('total_harga');
+        $pendapatan_penjualanBulanan = penjualan::get()->sum('total_harga');
 
-            $totalBanyakDibeli = Order::select('nama_orderan')
-    ->groupBy('nama_orderan')
-    ->orderByRaw('SUM(jumlah) DESC')
-    ->value('nama_orderan');
-
-
-        $tanggalSekarang = Carbon::now()->format('d F Y');
-        $orderCards = OrderCard::all();
-
-
-        $orderCards = OrderCard::all();
+        // jumlah penjualan harian 
+        $orderCards = penjualan::whereDate('created_at', $today)->get();
         $totalQuantity = 0;
 
         foreach ($orderCards as $orderCard) {
-            $quantities = explode(', ', $orderCard->jumlah);
+            $quantities = explode('-', $orderCard->jumlah);
 
             foreach ($quantities as $quantity) {
                 $totalQuantity += (int)$quantity;
             }
         }
+        // jumlah penjualan  
+        $orderCards = penjualan::get();
+        $totalQuantityAll = 0;
 
-        return view('kasir.dashboard', 
-        ['orders'=>$orders,
+        foreach ($orderCards as $orderCard) {
+            $quantitiesAll = explode('-', $orderCard->jumlah);
+
+            foreach ($quantitiesAll as $quantity) {
+                $totalQuantityAll += (int)$quantity;
+            }
+        }
+
+        // ============== BANYAK DIBELI SEMUA
+        $orderCards = penjualan::all();
+        $menuQuantities = [];
+
+        // Hitung jumlah setiap menu
+        foreach ($orderCards as $orderCard) {
+            $menuItems = explode('-', $orderCard->menu);
+            $quantities = explode('-', $orderCard->jumlah);
+
+            foreach ($menuItems as $index => $menuItem) {
+                $qty = (int)$quantities[$index];
+
+                if (array_key_exists($menuItem, $menuQuantities)) {
+                    $menuQuantities[$menuItem] += $qty;
+                } else {
+                    $menuQuantities[$menuItem] = $qty;
+                }
+            }
+        }
+
+        // Temukan menu yang paling banyak dipesan
+        $mostOrderedMenuAll = '';
+        $maxQuantityAll = 0;
+
+        foreach ($menuQuantities as $menuItem => $quantity) {
+            if ($quantity > $maxQuantityAll) {
+                $mostOrderedMenuAll = $menuItem;
+                $maxQuantityAll = $quantity;
+            }
+        }
+        $orderCardsHarian = penjualan::whereDate('created_at', $today)->get();
+        $menuQuantities = [];
+
+        // Hitung jumlah setiap menu
+        foreach ($orderCardsHarian as $orderCard) {
+            $menuItems = explode('-', $orderCard->menu);
+            $quantities = explode('-', $orderCard->jumlah);
+
+            foreach ($menuItems as $index => $menuItem) {
+                $qty = (int)$quantities[$index];
+
+                if (array_key_exists($menuItem, $menuQuantities)) {
+                    $menuQuantities[$menuItem] += $qty;
+                } else {
+                    $menuQuantities[$menuItem] = $qty;
+                }
+            }
+        }
+
+        // Temukan menu yang paling banyak dipesan
+        $mostOrderedMenu = '';
+        $maxQuantity = 0;
+
+        foreach ($menuQuantities as $menuItem => $quantity) {
+            if ($quantity > $maxQuantity) {
+                $mostOrderedMenu = $menuItem;
+                $maxQuantity = $quantity;
+            }
+        }
+        // =========
+
+        // $orders = order::whereDate('created_at', Carbon::today())->get();
+        $lowStockMenu = menu::where('jumlah', '<', 10)->Paginate(2);
+        // tanggal
+        $tanggalSekarang = Carbon::now()->format('d F Y');
+        // data penjualan harian table
+        $dataOrderTable = penjualan::whereDate('created_at', $today)->get();
+
+        $orderChard = orderCard::Paginate(3);
+
+
+
+        // ===================================GRAFIK
+
+        return view('kasir.dashboard', [
+        'dataOrderTable' => $dataOrderTable,
         'orderCard' =>$orderChart->build(),
-        // 'penjualan_menus'=>$penjualan,
-        'pendapatan_penjualans'=>$pendapatan_penjualan,
-        'total_penjualans'=>$total_penjualan,
-        'orderWithHighestTotal'=>$orderWithHighestTotal,
+        'pendapatan_penjualans'=>$pendapatan_penjualanHarian,
         'lowStok'=>$lowStockMenu,
         'tanggal' =>$tanggalSekarang,
-        'totalPenjualan' => $penjualanTotal,
-        'totalPendapatan'=>$totalPendapatan,
-        'totalBanyakDibeli'=>$totalBanyakDibeli,
-        'orderCards' => $orderCards,
-        'totalQuantity' => $totalQuantity
+        'pendapatan_penjualanBulanan' => $pendapatan_penjualanBulanan,
+        'totalQuantityAll' => $totalQuantityAll, 
+        'orderCards' => $orderCardsHarian,
+        'totalQuantity' => $totalQuantity,
+        'mostOrderedMenuAll' => $mostOrderedMenuAll,
+        'mostOrderedMenu' => $mostOrderedMenu,
+        'maxQuantity' => $maxQuantity,
+        'maxQuantityAll' => $maxQuantityAll,
+        'orderChard' => $orderChard
     ]);
         
     }

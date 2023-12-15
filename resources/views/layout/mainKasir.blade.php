@@ -19,14 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
-        /* .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      } */
-
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
@@ -70,37 +62,45 @@
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
         }
-        .dashboard{
-            background-color:{{ $textColor ?? 'black' }};
+
+        .dashboard {
+            background-color: {{ $textColor ?? 'black' }};
         }
-        .order{
-            background-color:{{ $order ?? 'black' }};
+
+        .order {
+            background-color: {{ $order ?? 'black' }};
         }
-        .menu{
-            background-color:{{ $menukopi ?? 'black' }};
+
+        .menu {
+            background-color: {{ $menukopi ?? 'black' }};
         }
-        .has-submenu{
-            background-color:{{ $daftarOrder ?? 'black' }};
+
+        .has-submenu {
+            background-color: {{ $daftarOrder ?? 'black' }};
         }
-        .persediaan{
-            background-color:{{ $persediaan ?? 'black' }};
+
+        .persediaan {
+            background-color: {{ $persediaan ?? 'black' }};
         }
-        .transaksi{
-            background-color:{{ $transaksi ?? 'black' }};
+
+        .transaksi {
+            background-color: {{ $transaksi ?? 'black' }};
         }
-        .admin{
-            background-color:{{ $admin ?? 'black' }};
+
+        .admin {
+            background-color: {{ $admin ?? 'black' }};
         }
-        .laporan{
-            background-color:{{ $laporan ?? 'black' }};
-            border-radius:{{ $border1 ?? '' }};
+
+        .laporan {
+            background-color: {{ $laporan ?? 'black' }};
+            border-radius: {{ $border1 ?? '' }};
         }
     </style>
     <link href="dashboard.css" rel="stylesheet">
 </head>
 
 <body style="background-color: rgb(229, 229, 229)">
-{{-- <body style="background-color: grey"> --}}
+    {{-- <body style="background-color: grey"> --}}
     {{-- <header class="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow" style="background-color: white;">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-4 fs-10" href="{{ route('kasir.dashboard') }}">Coffee Shop</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
@@ -119,61 +119,63 @@
     </header> --}}
     {{-- <header><h3>Dashboard</h3></header> --}}
 
-    <div class="container-fluid" >
+    <div class="container-fluid">
         <div class="row">
             {{-- menu --}}
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse" style="background-color: black; border-radius:0px 20px 20px 0px;">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse"
+                style="background-color: black; border-radius:0px 20px 20px 0px;">
                 <div class="position-sticky pt-0 sidebar-sticky">
                     <div class="logo"><img style="height: 120px; width:120px;" src="assets/icon/logo kedai kopi.png"
-                        alt="orders"></div>
+                            alt="orders"></div>
                     <ul class="nav flex-column">
                         <li class="nav-item dashboard">
                             <a class="nav-link" aria-current="page" href="{{ route('kasir.dashboard') }}">
-                                <span class="apa" data-feather="home" class="align-text-bottom"><img src="assets/icon/home5.png"
-                                        alt="dashboard"></span>
-                                
+                                <span class="apa" data-feather="home" class="align-text-bottom"><img
+                                        src="assets/icon/home5.png" alt="dashboard"></span>
+
                                 <span style="color: white;">Dashboard</span>
                             </a>
                         </li>
-                        
+
                         <li class="has-submenu">
                             <a class="nav-link">
-                                <span data-feather="users" class="align-text-bottom"><img src="assets/icon/transaction5.png"
-                                        alt="user"></span>
-                                
-                                        <span id="transaction-icon" style="color: white; cursor: pointer;">Kasir<i class="fa-solid fa-angle-down" style="margin-left: 20px;"></i></span>
+                                <span data-feather="users" class="align-text-bottom"><img
+                                        src="assets/icon/transaction5.png" alt="user"></span>
+
+                                <span id="transaction-icon" style="color: white; cursor: pointer;">Kasir<i
+                                        class="fa-solid fa-angle-down" style="margin-left: 20px;"></i></span>
 
                             </a>
-                        <ul class="submenu">
-                            <li nav-item>
-                            <a class="nav-link" href="{{ route('kasir.daftarOrder') }}">
-                                
-                                <span style="color: white;" class="koko">Order dulu
-                                </span>
-                            </a>
+                            <ul class="submenu">
+                                <li nav-item>
+                                    <a class="nav-link" href="{{ route('kasir.Order') }}">
+
+                                        <span style="color: white;" class="koko">Order dulu
+                                        </span>
+                                    </a>
+                                </li>
+                                <li nav-item>
+                                    <a class="nav-link" href="{{ route('kasir.transaksi') }}">
+
+                                        <span style="color: white;" class="koko">Transaksi
+                                        </span>
+                                    </a>
+                                </li>
+                                <li nav-item>
+                                    <a class="nav-link" href="{{ route('kasir.transaksiSelesai') }}">
+
+                                        <span style="color: white;" class="koko">Penjualan
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li nav-item>
-                            <a class="nav-link" href="/orders">
-                                
-                                <span style="color: white;" class="koko">Daftar Orderan
-                                </span>
-                            </a>
-                        </li>
-                            <li nav-item>
-                            <a class="nav-link" href="{{ route('kasir.transaksi') }}">
-                                
-                                <span style="color: white;" class="koko">Transaksi
-                                </span>
-                            </a>
-                        </li>
-                        </ul>
-                    </li>
 
                         <li class="nav-item menu">
                             <a class="nav-link" href="/MenuProduk">
                                 <span data-feather="shopping-cart" class="align-text-bottom"><img
                                         src="assets/icon/menu.png" alt="menu"></span>
-                                
+
                                 <span style="color: white;">Menu</span>
                             </a>
                         </li>
@@ -181,7 +183,7 @@
                             <a class="nav-link" href="/persediaan">
                                 <span data-feather="shopping-cart" class="align-text-bottom"><img
                                         src="assets/icon/product2.png" alt="menu"></span>
-                                
+
                                 <span style="color: white;">Persediaan</span>
                             </a>
                         </li>
@@ -197,14 +199,14 @@
                             <a class="nav-link" href="/admin">
                                 <span data-feather="file-text" class="align-text-bottom"><img
                                         src="assets/icon/admin.png" alt="dashboard"></span>
-                                <span style="color: white;">Admin</span> 
+                                <span style="color: white;">Admin</span>
                             </a>
                         </li>
                         <li class="nav-item laporan">
                             <a class="nav-link" href="{{ route('kasir.laporan') }}">
                                 <span data-feather="file-text" class="align-text-bottom"><img
                                         src="assets/icon/report.png" alt="dashboard"></span>
-                                
+
                                 <span style="color: white;">Laporan</span>
                             </a>
                         </li>
@@ -225,6 +227,36 @@
             {{-- data --}}
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-3">
+                <div style="background-color: rgb(78, 78, 255); margin:0px; color:white; padding:10px; border-radius:0px 0px 20px 20px; display:flex;   justify-content:space-between;">
+                    <h5>@yield('title')</h5>
+                    @auth
+                        <li class="nav-item dropdown" style="background-color: rgb(69, 182, 136); padding:5px 10px;">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                {{ auth()->user()->username }}
+                                <img src="{{ asset('storage/' . auth()->user()->image) }}" alt="User Photo"
+                                    style="height: 30px; width:30px; border-radius:50%;">
+
+                            </a>
+                            <ul class="dropdown-menu" style="font-size: 14px;">
+                                <li><a class="dropdown-item" href="{{ route('kasir.dashboard') }}"><i class="fa-solid fa-dice"></i> Dashboard</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-user"></i> Edit Profil</a></li>
+                                <li>
+
+                                    <form action="{{ route('auth.logout') }}" method="post">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item"><i
+                                                class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+                                    </form>
+                            </ul>
+                        </li>
+
+                    @endauth
+
+                </div>
 
                 {{-- dashboard --}}
                 @yield('dashboard')
@@ -277,53 +309,53 @@
     </script>
     <script src="dashboard.js"></script>
 
-  <script>
-    // rotasi icon angle
-    document.getElementById("transaction-icon").addEventListener("click", function() {
-  var icon = this.querySelector("i.fa-angle-down");
-  if (icon.classList.contains("rotate")) {
-    icon.classList.remove("rotate");
-  } else {
-    icon.classList.add("rotate");
-  }
-});
-    // triger submenu transaksi
-    document.addEventListener("DOMContentLoaded", function() {
-  const submenuItems = document.querySelectorAll('.has-submenu');
+    <script>
+        // rotasi icon angle
+        document.getElementById("transaction-icon").addEventListener("click", function() {
+            var icon = this.querySelector("i.fa-angle-down");
+            if (icon.classList.contains("rotate")) {
+                icon.classList.remove("rotate");
+            } else {
+                icon.classList.add("rotate");
+            }
+        });
+        // triger submenu transaksi
+        document.addEventListener("DOMContentLoaded", function() {
+            const submenuItems = document.querySelectorAll('.has-submenu');
 
-  submenuItems.forEach(item => {
-    const submenu = item.querySelector('.submenu');
+            submenuItems.forEach(item => {
+                const submenu = item.querySelector('.submenu');
 
-    // Buka/tutup submenu saat item utama diklik
-    item.addEventListener('click', function(event) {
-      event.preventDefault();
-      if (submenu.style.display === 'block') {
-        submenu.style.display = 'none';
-      } else {
-        submenu.style.display = 'block';
-      }
-    });
+                // Buka/tutup submenu saat item utama diklik
+                item.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    if (submenu.style.display === 'block') {
+                        submenu.style.display = 'none';
+                    } else {
+                        submenu.style.display = 'block';
+                    }
+                });
 
-    // Mencegah penutupan submenu saat item submenu diklik
-    const submenuLinks = submenu.querySelectorAll('a');
-    submenuLinks.forEach(link => {
-      link.addEventListener('click', function(event) {
-        event.stopPropagation();
-        // Hapus tanda komentar pada baris berikut jika ingin menutup submenu setelah mengklik item submenu
-        //submenu.style.display = 'none';
-      });
-    });
-  });
-});
+                // Mencegah penutupan submenu saat item submenu diklik
+                const submenuLinks = submenu.querySelectorAll('a');
+                submenuLinks.forEach(link => {
+                    link.addEventListener('click', function(event) {
+                        event.stopPropagation();
+                        // Hapus tanda komentar pada baris berikut jika ingin menutup submenu setelah mengklik item submenu
+                        //submenu.style.display = 'none';
+                    });
+                });
+            });
+        });
 
-// triger update data menu modal boostraph
+        // triger update data menu modal boostraph
 
-{{-- EDIT TRIGER --}}
+        {{-- EDIT TRIGER --}}
 
         // edit stok
         document.addEventListener('DOMContentLoaded', function() {
             var editButtons = document.querySelectorAll('.btnEditStok');
-            
+
             editButtons.forEach(function(button) {
                 button.addEventListener('click', function() {
                     var stok_id = this.getAttribute('data-stok_id');
@@ -334,7 +366,7 @@
                     var supplier = this.getAttribute('data-supplier');
                     var harga_beli = this.getAttribute('data-harga_beli');
                     var keterangan = this.getAttribute('data-keterangan');
-    
+
                     // modal edit stok
                     var modalEdit = document.getElementById('editStok');
                     modalEdit.querySelector('#stok_id').value = stok_id;
@@ -363,7 +395,7 @@
         // edit menu
         document.addEventListener('DOMContentLoaded', function() {
             var editButtons = document.querySelectorAll('.btn-edit');
-            
+
             editButtons.forEach(function(button) {
                 button.addEventListener('click', function() {
                     var id = this.getAttribute('data-myid');
@@ -371,7 +403,7 @@
                     var kategori = this.getAttribute('data-mykategori');
                     var harga = this.getAttribute('data-myharga');
                     var jumlah = this.getAttribute('data-myjumlah');
-    
+
                     // modal edit menu
                     var modalEdit = document.getElementById('edit');
                     modalEdit.querySelector('#id_menu').value = id;
@@ -394,7 +426,7 @@
         // edit admin
         document.addEventListener('DOMContentLoaded', function() {
             var editButtons = document.querySelectorAll('.btnEditAdmin');
-            
+
             editButtons.forEach(function(button) {
                 button.addEventListener('click', function() {
                     var id = this.getAttribute('data-id');
@@ -402,7 +434,7 @@
                     var email = this.getAttribute('data-email');
                     var username = this.getAttribute('data-username');
                     var password = this.getAttribute('data-password');
-    
+
                     // modal edit admin
                     var modalEdit = document.getElementById('editAdmin');
                     modalEdit.querySelector('#id_admin').value = id;
@@ -422,106 +454,69 @@
             });
         });
 
-        // edit order
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var editButtons = document.querySelectorAll('.btn-edit-orders');
-            
-            editButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    var id = this.getAttribute('data-myid');
-                    var nama_pembeli = this.getAttribute('data-myname_pembeli');
-                    var nama_orderan = this.getAttribute('data-myorderan');
-                    var jumlah = this.getAttribute('data-myjumlah');
-                    var harga = this.getAttribute('data-myharga');
-                    var total = this.getAttribute('data-mytotal');
-                    var keterangan = this.getAttribute('data-myketerangan');
-
-                    // modal edit orders
-                    var modalEditOrders = document.getElementById('edit_orders');
-                    modalEditOrders.querySelector('#id').value = id;
-                    modalEditOrders.querySelector('#name_costumer').value = nama_pembeli;
-                    modalEditOrders.querySelector('#myDropdowns').value = nama_orderan;
-                    modalEditOrders.querySelector('#jumlah').value = jumlah;
-                    modalEditOrders.querySelector('#harga').value = harga;
-                    modalEditOrders.querySelector('#total_harga_jual').value = total;
-                    modalEditOrders.querySelector('#keterangan').value = keterangan;
-                    // modal hapus orders
-                    var modalHapusOrders = document.getElementById('hapus_orders');
-                    modalHapusOrders.querySelector('#id').value = id;
-                    modalHapusOrders.querySelector('#nama_pembeli').value = nama_pembeli;
-                    modalHapusOrders.querySelector('#nama_orderan').value = nama_orderan;
-                    modalHapusOrders.querySelector('#keterangan').value = keterangan;
-                    modalHapusOrders.querySelector('#jumlah').value = jumlah;
-                    modalHapusOrders.querySelector('#harga').value = harga;
-                    modalHapusOrders.querySelector('#total_harga_jual').value = total;
-                });
-            });
-        });
-
         function displaySelectedValuesEdit() {
-      var dropdown = document.getElementById("nama_orderan");
-      var selectedOption = dropdown.options[dropdown.selectedIndex].value;
-      
-      var values = selectedOption.split(",");
-      var displayDivHarga = document.getElementById("selectedValuesHargaEdit");
-      var displayDiv = document.getElementById("selectedValuesHargaEditHarga");
-      var jumlah = parseInt(document.getElementById("jumlah").value);
-      
-      displayDivHarga.value = values[0];
-      displayDiv.value = values[1];
-    
-      // var hargaPerUnit = parseInt(displayDivHarga.value);
-      var hargaPerUnit = parseInt(displayDiv.value);
-      hargaPerUnit = isNaN(hargaPerUnit) ? 0 : hargaPerUnit;
-    
-      var totalHargaJual = hargaPerUnit * jumlah;
-      document.getElementById("total_harga_jualEdit").value = totalHargaJual;
-    }
+            var dropdown = document.getElementById("nama_orderan");
+            var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+
+            var values = selectedOption.split(",");
+            var displayDivHarga = document.getElementById("selectedValuesHargaEdit");
+            var displayDiv = document.getElementById("selectedValuesHargaEditHarga");
+            var jumlah = parseInt(document.getElementById("jumlah").value);
+
+            displayDivHarga.value = values[0];
+            displayDiv.value = values[1];
+
+            // var hargaPerUnit = parseInt(displayDivHarga.value);
+            var hargaPerUnit = parseInt(displayDiv.value);
+            hargaPerUnit = isNaN(hargaPerUnit) ? 0 : hargaPerUnit;
+
+            var totalHargaJual = hargaPerUnit * jumlah;
+            document.getElementById("total_harga_jualEdit").value = totalHargaJual;
+        }
 
         function displaySelectedValuess() {
-      var dropdown = document.getElementById("myDropdowns");
-      var selectedOption = dropdown.options[dropdown.selectedIndex].value;
-      
-      var values = selectedOption.split(",");
-      var displayDivHarga = document.getElementById("selectedValuesHarga");
-      var displayDiv = document.getElementById("selectedValuess");
-      var jumlah = parseInt(document.getElementById("jumlah_total_pembelian_menu").value);
-      
-      displayDivHarga.value = values[0];
-      displayDiv.value = values[1];
-    
-      // var hargaPerUnit = parseInt(displayDivHarga.value);
-      var hargaPerUnit = parseInt(displayDiv.value);
-      hargaPerUnit = isNaN(hargaPerUnit) ? 0 : hargaPerUnit;
-    
-      var totalHargaJual = hargaPerUnit * jumlah;
-      document.getElementById("total_harga_jual").value = totalHargaJual;
-    }
+            var dropdown = document.getElementById("myDropdowns");
+            var selectedOption = dropdown.options[dropdown.selectedIndex].value;
 
-function calculatePrice() {
-    let checkboxes = document.querySelectorAll('input[name="barang[]"]:checked');
-    let totalHarga = 0;
+            var values = selectedOption.split(",");
+            var displayDivHarga = document.getElementById("selectedValuesHarga");
+            var displayDiv = document.getElementById("selectedValuess");
+            var jumlah = parseInt(document.getElementById("jumlah_total_pembelian_menu").value);
 
-    checkboxes.forEach(function(checkbox) {
-        let harga = checkbox.nextElementSibling.textContent.split(' - Rp ')[1];
-        totalHarga += parseFloat(harga);
-    });
+            displayDivHarga.value = values[0];
+            displayDiv.value = values[1];
 
-    let jumlah = parseFloat(document.getElementById('jumlah').value);
-    let hargaPerItem = totalHarga / jumlah;
+            // var hargaPerUnit = parseInt(displayDivHarga.value);
+            var hargaPerUnit = parseInt(displayDiv.value);
+            hargaPerUnit = isNaN(hargaPerUnit) ? 0 : hargaPerUnit;
 
-    document.getElementById('harga').value = hargaPerItem.toFixed(2);
-    document.getElementById('total').value = totalHarga.toFixed(2);
+            var totalHargaJual = hargaPerUnit * jumlah;
+            document.getElementById("total_harga_jual").value = totalHargaJual;
+        }
 
-}
+        function calculatePrice() {
+            let checkboxes = document.querySelectorAll('input[name="barang[]"]:checked');
+            let totalHarga = 0;
 
-// =============================== ADD TO SHOPING CARD
+            checkboxes.forEach(function(checkbox) {
+                let harga = checkbox.nextElementSibling.textContent.split(' - Rp ')[1];
+                totalHarga += parseFloat(harga);
+            });
+
+            let jumlah = parseFloat(document.getElementById('jumlah').value);
+            let hargaPerItem = totalHarga / jumlah;
+
+            document.getElementById('harga').value = hargaPerItem.toFixed(2);
+            document.getElementById('total').value = totalHarga.toFixed(2);
+
+        }
+
+        // =============================== ADD TO SHOPING CARD
 
 
 
-// ---------------------------
-      </script>
+        // ---------------------------
+    </script>
 
 </body>
 
