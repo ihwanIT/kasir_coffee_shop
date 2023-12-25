@@ -13,13 +13,8 @@
 
     <div class="container-daftar-order">
         <div class="daftar-order">
-            <div class="card" style="text-align: star; padding:10px; margin:10px 0px; border:0; border-radius:20px;">
-
-                {{-- <div class="search-menu-order"> --}}
-
+            <div class="card-search">
                 <input type="search" class="search-menu-order" id="searchInput" placeholder="Cari..">
-                {{-- </div> --}}
-
                 <div class="pilih-menu">
                     <div class="card Minuman-btn" style="box-shadow: 0px 2px 5px gray; cursor:pointer;"
                         onclick="showMenu('Minuman')">Minuman</div>
@@ -104,7 +99,7 @@
     </div>
 
     @if ($orderBaru)
-    <div style="background-color: white; margin:10px 0px; padding:10px; border-radius:20px;">
+    <div class="orderan-table">
         <table class="table table-striped table-hover">
             <thead>
                 <tr>

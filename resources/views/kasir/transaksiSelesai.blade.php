@@ -7,7 +7,7 @@ $daftarOrder = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
 
 {{-- table --}}
 <div class="container-tale-transaksi" style="background-color: white; border-radius:20px; padding:10px; margin:10px 0px">
-  <table class="table table-striped">
+  <table class="table table-striped table-bordered">
     <div class="search">
       <div>
         <a href="{{ route('kasir.Order') }}">
@@ -19,6 +19,7 @@ $daftarOrder = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
           <tr>
               <th scope="col">Pesanan</th>
               <th scope="col">Jumlah Pesanan</th>
+              <th scope="col">Pembayaran</th>
               <th scope="col">Uang</th>
               <th scope="col">Kembalian</th>
               <th scope="col">Total Bayar</th>
@@ -30,6 +31,7 @@ $daftarOrder = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
               <tr>
                   <td>{{ $data->menu }}</td>
                   <td>{{ $data->jumlah }}</td>
+                  <td>{{ $data->metode }}</td>
                   <td>@currency($data->uang)</td>
                   <td>{{ $data->kembalian }}</td>
                   <td>@currency($data->total_harga)</td>

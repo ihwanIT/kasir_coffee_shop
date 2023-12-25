@@ -148,20 +148,6 @@
     </div>
     </form>
 </div>
-{{-- end --}}
-
-{{-- valisadi data --}}
-
-{{-- @if (session('error'))
-<div class="alert alert-danger" style="margin: 10px; border:0; ">
-    <i class="fa-solid fa-circle-check"></i> {{ session('error') }}
-</div>
-@endif
-@if (session('success'))
-<div class="alert alert-success" style="margin: 10px; border:0; ">
-    <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
-</div>
-@endif --}}
 
 @if ($errors->any())
 <div class="alert alert-success" style="margin: 10px; border:0; ">
@@ -210,7 +196,7 @@
 
 {{-- end --}}
 
-
+<div class="" style="background-color: white; padding:20px; border-radius:10px">
 <table class="table table-striped table-hover">
     <thead class="table-dark">
         <tr>
@@ -276,6 +262,7 @@
 
     </tbody>
 </table>
+</div>
 
 {{ $menu->links() }}
 @endsection

@@ -175,6 +175,7 @@
     </div>
 
     {{-- table --}}
+    <div class="" style="background-color: white; padding:20px; border-radius:10px">
     <table class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>
@@ -230,6 +231,7 @@
 
         </tbody>
     </table>
+</div>
 
     {{-- {{ $admins->links() }} --}}
 @endsection

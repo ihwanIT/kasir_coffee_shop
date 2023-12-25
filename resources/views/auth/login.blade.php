@@ -17,7 +17,7 @@
 
 <body>
     <div class="card-login">
-        <img src="{{ asset('assets/login3.png') }}" alt="login">
+        <img src="{{ asset('assets/login3.png') }}" alt="login" class="loginImage">
         <div class="login">
             <form class="row g-3" method="post" action="{{ route('auth.loginValidation') }}" >
               @csrf

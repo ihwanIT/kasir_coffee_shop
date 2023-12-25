@@ -12,10 +12,9 @@ class OrderCardController extends Controller
 {
     public function store(Request $request)
     {
-        // $randomId = str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT);
-        $randomString = Str::random(3); // Generate random string of length 3
-        $randomNumber = str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT); // Generate random number of length 3
-        $randomId = $randomString . $randomNumber; // Combine the string and number
+        $randomString = Str::random(3);
+        $randomNumber = str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT); 
+        $randomId = $randomString . $randomNumber;
 
         $order = new orderCard;
         $order->id = $randomId;

@@ -21,6 +21,7 @@ class transaksiSelesaiController extends Controller
         $menus->id = $randomId;
         $menus->menu = $request->input('nama_DaftarOrder');
         $menus->jumlah = $request->input('jumlah');
+        $menus->metode = $request->input('metode');
         $menus->uang = $request->input('uang');
         $menus->kembalian = $request->input('kembalian');
         $menus->total_harga = $request->input('total_DaftarOrder');
@@ -29,6 +30,5 @@ class transaksiSelesaiController extends Controller
         $daftarOrder = orderCard::find($request->id);
         $daftarOrder->delete();
         return redirect()->back()->with('success','Transaksi Selesai');
-        // return redirect()->route('crud_menu.index')->with('success','success');
     }
 }

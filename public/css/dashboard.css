@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300&display=swap');
 body {
   font-size: .875rem;
+  background-color: #e7f4ff;
 }
 .logo{
   color: white;
   text-align: center;
   margin: 5px 10px;
+
+
+
 }
 
 /* header{
@@ -13,6 +17,11 @@ body {
   background-color: black;
   color: white;
   padding: 5px 0px 5px 200px ;
+} */
+/* 
+.nav-item a:hover{
+  background-color: #c7ddfb;
+  border-radius: 20px;
 } */
 h3{
   margin: 10px 0px;
@@ -96,8 +105,10 @@ a {
   box-shadow: 0px 2px 5px gray;
   border-radius: 20px;
   padding: 10px;
-  margin: 10px;
+  margin: 10px 0px;
   border: 0;
+  background-color: white;
+  width: 100%;
 }
 .orderan{
   overflow-y: auto;
@@ -422,4 +433,112 @@ select{
   padding: 10px;
   margin: 10px 0px 0px 20px;
   border-radius: 20px;
+}
+.logo{
+  display: block;
+}
+.card-grafik{
+  padding: 20px;
+  width:70%; 
+  border-radius:20px; 
+  margin:10px; 
+  border:0;  
+  background-color: white;
+}
+.daftar-orderan{
+  display: flex;
+}
+.data-penjualan-seluruh{
+  width:40%; 
+  background-color:white; 
+  padding:10px; 
+  margin:10px; 
+  border-radius:20px; 
+  text-align:center;
+  height:100%;
+}
+.container-data{
+  display: flex;
+}
+.card-search{
+  /* text-align: star;  */
+  padding:10px; 
+  margin:10px 0px; 
+  border:0; 
+  border-radius:20px;
+  background-color: white;
+  width: 100%;
+}
+.orderan-table{
+  background-color: white; 
+  margin:10px 0px; 
+  padding:10px; 
+  border-radius:20px;
+}
+footer{
+  font-size: 30px;
+  background-color: rgb(196, 196, 196);
+  height: 100px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 0;
+  bottom: 0;
+}
+/* display screen */
+@media screen and (max-width: 770px) {
+  .logo {
+    display: none; /* Menghilangkan gambar */
+  }
+  .container-card{
+    display: block;
+  }
+  .table-dashboard{
+    display: block;
+  }
+  .card-grafik{
+    width: 100%;
+    margin: 10px 0px;
+    padding: 0;
+
+  }
+  .table-stok-dashboard{
+    width: 100%;
+    box-shadow: none;
+    margin: 0;
+    padding-top: 20px;
+  }
+  .card-date{
+    margin: 10px 0px;
+  }
+  .daftar-orderan{
+    display: block;
+  }
+  .orderan{
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+  .data-penjualan-seluruh{
+    width: 100%;
+    margin: 10px 0px;
+    padding: 10px 0px;
+  }
+  .container-data{
+    justify-content: center;
+  }
+  .container-daftar-order{
+    display: block;
+  }
+  .daftar-order{
+    width: 100%;
+  }
+  .cart{
+    width: 100%;
+    margin: 10px 0px;
+    padding: 10px ;
+  }
+  .orderan-table{
+    width: 100%;
+
+  }
 }

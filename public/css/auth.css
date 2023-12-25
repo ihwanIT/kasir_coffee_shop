@@ -23,6 +23,7 @@ body {
     padding: 10px;
     border-radius: 10px; 
     box-shadow: 1px 2px 5px gray;
+    height: 100%;
 }
 .login h4{
     text-align: center;
@@ -34,3 +35,20 @@ body {
     color: red;
     font-style: italic;
 }
+.loginImage{
+    display: block;
+}
+
+/* display screen */
+@media screen and (max-width: 770px) {
+    .card-login{
+        display: block;
+    }
+    .loginImage{
+        display: none;
+    }
+    .card-login{
+        /* height: 0%; */
+        width: 90%;
+    }
+  }

@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('penjualans', function (Blueprint $table) {
+        Schema::create('ewallte_transaksis', function (Blueprint $table) {
             $table->id();
-            $table->string('menu'); 
+            $table->string('menu');
             $table->string('jumlah');
             $table->string('metode');
-            $table->integer('uang');
-            $table->string('kembalian');
-            $table->integer('total_harga');
+            $table->string('total_harga');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penjualans');
+        Schema::dropIfExists('ewallte_transaksis');
     }
 };

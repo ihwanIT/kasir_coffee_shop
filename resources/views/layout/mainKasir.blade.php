@@ -7,8 +7,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
+    <link rel="icon" type="image/x-icon" href="assets/logokedai.png">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.111.3">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>@yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -64,107 +66,98 @@
         }
 
         .dashboard {
-            background-color: {{ $textColor ?? 'black' }};
+            background-color: {{ $textColor ?? 'white' }};
         }
 
         .order {
-            background-color: {{ $order ?? 'black' }};
+            background-color: {{ $order ?? 'white' }};
         }
 
         .menu {
-            background-color: {{ $menukopi ?? 'black' }};
+            background-color: {{ $menukopi ?? 'white' }};
         }
 
         .has-submenu {
-            background-color: {{ $daftarOrder ?? 'black' }};
+            background-color: {{ $daftarOrder ?? 'white' }};
         }
 
         .persediaan {
-            background-color: {{ $persediaan ?? 'black' }};
+            background-color: {{ $persediaan ?? 'white' }};
         }
 
         .transaksi {
-            background-color: {{ $transaksi ?? 'black' }};
+            background-color: {{ $transaksi ?? 'white' }};
         }
 
         .admin {
-            background-color: {{ $admin ?? 'black' }};
+            background-color: {{ $admin ?? 'white' }};
         }
 
         .laporan {
-            background-color: {{ $laporan ?? 'black' }};
-            border-radius: {{ $border1 ?? '' }};
+            background-color: {{ $laporan ?? 'white' }};
         }
     </style>
     <link href="dashboard.css" rel="stylesheet">
 </head>
 
-<body style="background-color: rgb(229, 229, 229)">
-    {{-- <body style="background-color: grey"> --}}
-    {{-- <header class="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow" style="background-color: white;">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-4 fs-10" href="{{ route('kasir.dashboard') }}">Coffee Shop</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<body> 
 
-        <div class="navbar-nav">
-            <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="#">Sign out  
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="white" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
-                </a>
-            </div>
-        </div>
-    </header> --}}
+    
+
     {{-- <header><h3>Dashboard</h3></header> --}}
 
     <div class="container-fluid">
         <div class="row">
             {{-- menu --}}
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse"
-                style="background-color: black; border-radius:0px 20px 20px 0px;">
+                style="background-color: white; ">
                 <div class="position-sticky pt-0 sidebar-sticky">
-                    <div class="logo"><img style="height: 120px; width:120px;" src="assets/icon/logo kedai kopi.png"
-                            alt="orders"></div>
-                    <ul class="nav flex-column">
-                        <li class="nav-item dashboard">
-                            <a class="nav-link" aria-current="page" href="{{ route('kasir.dashboard') }}">
-                                <span class="apa" data-feather="home" class="align-text-bottom"><img
-                                        src="assets/icon/home5.png" alt="dashboard"></span>
 
-                                <span style="color: white;">Dashboard</span>
+                    <div class="logo"><img class="logo" style="width:100%;" src="assets/logokedai.png"
+                            alt="logo"></div>
+
+                    <ul class="nav flex-column">
+
+                        <li class="nav-item dashboard">
+                            <a class="nav-link" aria-current="page" href="{{ route('kasir.dashboard') }}" style="display: flex;   justify-content: start;">
+                                <span class="apa" data-feather="home" class="align-text-bottom">
+                                    <i class="material-icons">dashboard</i>
+                                </span>
+
+                                <span>Dashboard</span>
+
                             </a>
                         </li>
 
                         <li class="has-submenu">
-                            <a class="nav-link">
-                                <span data-feather="users" class="align-text-bottom"><img
-                                        src="assets/icon/transaction5.png" alt="user"></span>
+                            <a class="nav-link" style="display: flex;   justify-content: start;">
+                                <span data-feather="users" class="align-text-bottom">
+                                        <i class="material-icons"> point_of_sale</i>
+                                    </span>
 
-                                <span id="transaction-icon" style="color: white; cursor: pointer;">Kasir<i
-                                        class="fa-solid fa-angle-down" style="margin-left: 20px;"></i></span>
-
+                                <span id="transaction-icon" style=" cursor: pointer;">Kasir<i
+                                        class="fa-solid fa-angle-down" style="margin-left: 20px;"></i>
+                                    </span>
                             </a>
-                            <ul class="submenu">
+                            <ul class="submenu" style="background-color: white">
                                 <li nav-item>
                                     <a class="nav-link" href="{{ route('kasir.Order') }}">
 
-                                        <span style="color: white;" class="koko">Order dulu
+                                        <span class="koko">Order dulu
                                         </span>
                                     </a>
                                 </li>
                                 <li nav-item>
                                     <a class="nav-link" href="{{ route('kasir.transaksi') }}">
 
-                                        <span style="color: white;" class="koko">Transaksi
+                                        <span class="koko">Transaksi
                                         </span>
                                     </a>
                                 </li>
                                 <li nav-item>
                                     <a class="nav-link" href="{{ route('kasir.transaksiSelesai') }}">
 
-                                        <span style="color: white;" class="koko">Penjualan
+                                        <span class="koko">Penjualan
                                         </span>
                                     </a>
                                 </li>
@@ -172,80 +165,68 @@
                         </li>
 
                         <li class="nav-item menu">
-                            <a class="nav-link" href="/MenuProduk">
-                                <span data-feather="shopping-cart" class="align-text-bottom"><img
-                                        src="assets/icon/menu.png" alt="menu"></span>
+                            <a class="nav-link" href="/MenuProduk" style="display: flex;   justify-content: start;">
+                                        <span data-feather="users" class="align-text-bottom">
+                                            <i class="material-icons"> local_cafe</i>
+                                        </span>
 
-                                <span style="color: white;">Menu</span>
+                                <span>Menu</span>
                             </a>
                         </li>
                         <li class="nav-item persediaan">
-                            <a class="nav-link" href="/persediaan">
-                                <span data-feather="shopping-cart" class="align-text-bottom"><img
-                                        src="assets/icon/product2.png" alt="menu"></span>
+                            <a class="nav-link" href="/persediaan" style="display: flex;   justify-content: start;">
 
-                                <span style="color: white;">Persediaan</span>
+                                        <span data-feather="users" class="align-text-bottom">
+                                            <i class="material-icons"> inventory</i>
+                                        </span>
+                                <span>Persediaan</span>
                             </a>
                         </li>
-                    </ul>
-
-                    <h6
-                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-                        <span style="color: white;">Laporan</span>
-                    </h6>
-                    <ul class="nav flex-column mb-2">
-
                         <li class="nav-item admin">
-                            <a class="nav-link" href="/admin">
-                                <span data-feather="file-text" class="align-text-bottom"><img
-                                        src="assets/icon/admin.png" alt="dashboard"></span>
-                                <span style="color: white;">Admin</span>
+                            <a class="nav-link" href="/admin" style="display: flex;   justify-content: start;">
+                                        <span data-feather="users" class="align-text-bottom">
+                                            <i class="material-icons"> manage_accounts</i>
+                                        </span>
+                                <span>Admin</span>
                             </a>
                         </li>
                         <li class="nav-item laporan">
-                            <a class="nav-link" href="{{ route('kasir.laporan') }}">
-                                <span data-feather="file-text" class="align-text-bottom"><img
-                                        src="assets/icon/report.png" alt="dashboard"></span>
+                            <a class="nav-link" href="{{ route('kasir.laporan') }}" style="display: flex;   justify-content: start;">
+                                        <span data-feather="users" class="align-text-bottom">
+                                            <i class="material-icons">summarize</i>
+                                        </span>
 
-                                <span style="color: white;">Laporan</span>
+                                <span>Laporan</span>
                             </a>
                         </li>
-                        {{-- <li class="nav-item laporan" >
-                            <a class="nav-link" href="{{ route('kasir.laporan') }}" >
-                                <span data-feather="file-text" class="align-text-bottom">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="white" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
-                                    </span>
-                                
-                                <span style="color: white;" >Sign Out</span>
-                            </a>
-                        </li> --}}
                     </ul>
                 </div>
             </nav>
-            {{-- end menu --}}
-
-            {{-- data --}}
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-3">
-                <div style="background-color: rgb(78, 78, 255); margin:0px; color:white; padding:10px; border-radius:0px 0px 20px 20px; display:flex;   justify-content:space-between;">
-                    <h5>@yield('title')</h5>
-                    @auth
-                        <li class="nav-item dropdown" style="background-color: rgb(69, 182, 136); padding:5px 10px;">
+                <div style="padding: 10px;   background-color: white;   border-radius: 0px 0px 20px 20px; display:flex;   justify-content: space-between;">
+                    <h4>@yield('title')</h4> 
+                    <div class="" style="display: flex;   justify-content: center; align-items: center;">
+                        <div class="">
+                        @auth
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 {{ auth()->user()->username }}
                                 <img src="{{ asset('storage/' . auth()->user()->image) }}" alt="User Photo"
                                     style="height: 30px; width:30px; border-radius:50%;">
-
+                
                             </a>
                             <ul class="dropdown-menu" style="font-size: 14px;">
-                                <li><a class="dropdown-item" href="{{ route('kasir.dashboard') }}"><i class="fa-solid fa-dice"></i> Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ route('kasir.dashboard') }}"><i
+                                            class="fa-solid fa-dice"></i> Dashboard</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-user"></i> Edit Profil</a></li>
+                                <li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-user"></i> Edit
+                                        Profil</a></li>
                                 <li>
-
+                
                                     <form action="{{ route('auth.logout') }}" method="post">
                                         @csrf
                                         <button type="submit" class="dropdown-item"><i
@@ -253,9 +234,17 @@
                                     </form>
                             </ul>
                         </li>
-
                     @endauth
-
+                </div>
+                    <header class="navbar navbar-dark sticky-top  flex-md-nowrap p-0">
+                        <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill="black" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                          </svg>
+                        </button>
+                      </header>
+                    </div>
+ 
                 </div>
 
                 {{-- dashboard --}}
@@ -286,16 +275,13 @@
                 @yield('laporan')
                 {{-- end --}}
 
-
-
+            
             </main>
-
-            {{-- end data --}}
-
+         
         </div>
     </div>
-
-
+    <footer>
+    </footer>
     <script src="js/dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
@@ -349,8 +335,6 @@
         });
 
         // triger update data menu modal boostraph
-
-        {{-- EDIT TRIGER --}}
 
         // edit stok
         document.addEventListener('DOMContentLoaded', function() {

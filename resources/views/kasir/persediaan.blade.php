@@ -189,6 +189,7 @@ $persediaan = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
       </div>
 
       {{-- table --}}
+      <div class="" style="background-color: white; padding:20px; border-radius:10px">
       <table class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>
@@ -233,6 +234,7 @@ $persediaan = 'rgb(78, 78, 255)'; // Mengatur warna teks menjadi putih
 
         </tbody>
     </table>
+</div>
 
     {{ $stoks->links() }}
 @endsection

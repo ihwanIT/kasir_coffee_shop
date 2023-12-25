@@ -16,11 +16,9 @@ class dashboardController extends Controller
         // total pendapatan RP harian
         $pendapatan_penjualanHarian = penjualan::whereDate('created_at', $today)->sum('total_harga');
         $pendapatan_penjualanBulanan = penjualan::get()->sum('total_harga');
-
         // jumlah penjualan harian 
         $orderCards = penjualan::whereDate('created_at', $today)->get();
         $totalQuantity = 0;
-
         foreach ($orderCards as $orderCard) {
             $quantities = explode('-', $orderCard->jumlah);
 
@@ -31,7 +29,6 @@ class dashboardController extends Controller
         // jumlah penjualan  
         $orderCards = penjualan::get();
         $totalQuantityAll = 0;
-
         foreach ($orderCards as $orderCard) {
             $quantitiesAll = explode('-', $orderCard->jumlah);
 
@@ -39,19 +36,15 @@ class dashboardController extends Controller
                 $totalQuantityAll += (int)$quantity;
             }
         }
-
-        // ============== BANYAK DIBELI SEMUA
+        // BANYAK DIBELI SEMUA
         $orderCards = penjualan::all();
         $menuQuantities = [];
-
         // Hitung jumlah setiap menu
         foreach ($orderCards as $orderCard) {
             $menuItems = explode('-', $orderCard->menu);
             $quantities = explode('-', $orderCard->jumlah);
-
             foreach ($menuItems as $index => $menuItem) {
                 $qty = (int)$quantities[$index];
-
                 if (array_key_exists($menuItem, $menuQuantities)) {
                     $menuQuantities[$menuItem] += $qty;
                 } else {
@@ -59,11 +52,9 @@ class dashboardController extends Controller
                 }
             }
         }
-
         // Temukan menu yang paling banyak dipesan
         $mostOrderedMenuAll = '';
         $maxQuantityAll = 0;
-
         foreach ($menuQuantities as $menuItem => $quantity) {
             if ($quantity > $maxQuantityAll) {
                 $mostOrderedMenuAll = $menuItem;
@@ -72,15 +63,12 @@ class dashboardController extends Controller
         }
         $orderCardsHarian = penjualan::whereDate('created_at', $today)->get();
         $menuQuantities = [];
-
         // Hitung jumlah setiap menu
         foreach ($orderCardsHarian as $orderCard) {
             $menuItems = explode('-', $orderCard->menu);
             $quantities = explode('-', $orderCard->jumlah);
-
             foreach ($menuItems as $index => $menuItem) {
                 $qty = (int)$quantities[$index];
-
                 if (array_key_exists($menuItem, $menuQuantities)) {
                     $menuQuantities[$menuItem] += $qty;
                 } else {
@@ -88,7 +76,6 @@ class dashboardController extends Controller
                 }
             }
         }
-
         // Temukan menu yang paling banyak dipesan
         $mostOrderedMenu = '';
         $maxQuantity = 0;
@@ -99,21 +86,12 @@ class dashboardController extends Controller
                 $maxQuantity = $quantity;
             }
         }
-        // =========
-
-        // $orders = order::whereDate('created_at', Carbon::today())->get();
         $lowStockMenu = menu::where('jumlah', '<', 10)->Paginate(2);
         // tanggal
         $tanggalSekarang = Carbon::now()->format('d F Y');
         // data penjualan harian table
         $dataOrderTable = penjualan::whereDate('created_at', $today)->get();
-
         $orderChard = orderCard::Paginate(3);
-
-
-
-        // ===================================GRAFIK
-
         return view('kasir.dashboard', [
         'dataOrderTable' => $dataOrderTable,
         'orderCard' =>$orderChart->build(),
